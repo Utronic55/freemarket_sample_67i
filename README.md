@@ -1,6 +1,6 @@
 # README
 
-## usersテーブルメルカリユーザー
+## users
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|null: false, foreign_key: true|
@@ -12,24 +12,28 @@
 |phone_number|integer|null:false|
 |email|string|null:false|
 |password|string|null:false|
-|address_number|integer|null:false|
-|address_prefecture|string|null:false|
-|address_city|string|null:false|
-|address_town|string|null:false|
 |birth_year|integer|null:false|
 |birth_month|integer|null:false|
 |birth_day|integer|null:false|
 ### Association
 - has_many items
 
-## itemsテーブル 出品アイテム
+## addresses
+|Column|Type|Options|
+|------|----|-------|
+|number|integer|null:false|
+|prefecture|string|null:false|
+|city|string|null:false|
+|town|string|null:false|
+### Association
+- belongs_to user
+
+## items
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|null:false, foreign_key: true|
 |brand_id|integer|null: false, foreign_key: true|
-|large_category_id|integer|null: false, foreign_key: true|
-|middle_category_id|integer|null: false, foreign_key: true|
-|small_category_id|integer|null: false, foreign_key: true|
+|category_id|integer|null: false, foreign_key: true|
 |buyer_id|integer|null: false, foreign_key: true|
 |saler_id|integer|null:false, foreign_key:true|
 |name|string|null: false|
@@ -44,42 +48,32 @@
 ### Association
 -has_many item_images
 -belongs_to brand
--belongs_to large_category
--belongs_to middle_category
--belongs_to small_category
+-belongs_to category
 -belongs_to user
 
-## item_imagesテーブル
+## item_images
+|Column|Type|Options|
+|------|----|-------|
 |id|integer|null: false, foreign_key: true|
 |name|string|null:false|
 |item_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to item
-##brandsテーブル
+
+## brands
+|Column|Type|Options|
+|------|----|-------|
 |id|integer|null:false, foreign_key: true|
 |name|string|null:false|
 ### Association
 - has_many_items
-##large_categoriesテーブル
+
+## categories
+|Column|Type|Options|
+|------|----|-------|
 |id|integer|null:false, foreign_key: true|
 |name|string|null:false|
 |brand_id|integer|null:false, foreign_key: true|
-|middle_category_id|integer|null:false, foreign_key: true|
-|small_category_id|integer|null:false, foreign_key: true|
+|path|string|null:false|
 ### Association
 - has_many items
-- has_many middle_categories
-##middle_categoriesテーブル
-|id|integer|null: false, foreign_key: true|
-|name|string|null:false|
-|small_category_id|integer|null: false, foreign_key: true|
-### Association
-- has_many items
--has_many small_categories
--belongs_to large_category
-##small_categoriesテーブル
-|id|integer|null:false foreign_key: true|
-|name|string|null:false|
-### Association
-- has_many items
-- belongs_to middle_category
