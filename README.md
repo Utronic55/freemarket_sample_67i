@@ -17,10 +17,12 @@
 |birth_day|integer|null:false|
 ### Association
 - has_many items
+- has_one address
 
 ## addresses
 |Column|Type|Options|
 |------|----|-------|
+|user_id|integer|null:false,foreign_key: true|
 |number|integer|null:false|
 |prefecture|string|null:false|
 |city|string|null:false|
@@ -68,12 +70,11 @@
 ### Association
 - has_many_items
 
-## categories
+## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|null:false, foreign_key: true|
 |name|string|null:false|
-|brand_id|integer|null:false, foreign_key: true|
 |path|string|null:false|
 ### Association
 - has_many items
