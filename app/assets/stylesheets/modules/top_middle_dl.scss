@@ -1,0 +1,33 @@
+.top_middle_dl{
+  background: $p-middle;
+  width: 100vw;
+  height: 400px;
+  background-position: bottom right;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  &__inner{
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    color: $white;
+    &__subtitle{
+      font-size: 27px;
+      font-weight: bold;
+      line-height: 1.4;
+    }
+    &__text{
+      font-size: 18px;
+      margin: 20px 0 30px;
+      line-height: 1.5;
+    }
+    &__btn{
+      display: flex;
+      margin-top: 24px;
+      .a_btn{
+        margin-right: 10px;
+      }
+      .b_btn{
+
+      }
+    }
+  }
+}

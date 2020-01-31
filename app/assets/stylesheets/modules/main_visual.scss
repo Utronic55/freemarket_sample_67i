@@ -1,0 +1,35 @@
+.main_visual{
+  background: $p-visual;
+  background-size: cover;
+  background-position: top center;
+  display: flex;
+  align-items: center;
+  width: calc(100vw - 120px);
+  height: 560px;
+  padding:0 60px;
+
+  .content{
+    color: $white;
+    padding-top: 35px;
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    &__subtitle{
+      font-size: 60px;
+      height: 144px;
+      line-height: 210px;
+    }
+    &__text{
+      font-size: 18px;
+      margin-top: 16px;
+    }
+    &__btn{
+      display: flex;
+      margin-top: 24px;
+      .a_btn{
+        margin-right: 10px;
+      }
+      .b_btn{
+
+      }
+    }
+  }
+}
