@@ -24,5 +24,13 @@
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
-/config/master.key
+
 # config/secrets.yml
+config/secrets.yml
+# Ignore master key for decrypting credentials and more.
+
+
+# Ignore master key for decrypting credentials and more.
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
