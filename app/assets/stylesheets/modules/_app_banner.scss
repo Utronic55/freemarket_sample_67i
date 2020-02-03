@@ -1,0 +1,38 @@
+.app_banner{
+  background: $p-banner;
+  background-size: cover;
+  background-position: top center;
+  align-items: center;
+  position: relative;
+  width:100vw;
+  height: 359.33px;
+  
+  &__content{
+    height: 159.33px;
+    padding:100px 40px;
+    text-align: center;
+    color: $white;
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    
+    &__subtitle{
+      font-size: 24px;
+      font-weight: bold;
+      height: 33px;
+    }
+    &__text{
+      font-size: 35px;
+      height: 53px;
+    }
+    &__btn{
+      display: flex;
+      justify-content: center;
+      margin-top: 24px;
+      .a_btn{
+        margin-right: 10px;
+      }
+      .b_btn{
+
+      }
+    }
+  }
+}
