@@ -1,0 +1,78 @@
+.pickup_container{
+  width: 100vw;
+  height: 346px;
+  background-color: #f8f8f8;
+  padding-top: 80px;
+  &__head{
+    font-weight: bold;
+    height: 39px;
+    font-size: 28px;
+    color: $black;
+    text-align: center;
+  }
+  &__title{
+    font-weight: bold;
+    height: 36px;
+    color: $light_blue;
+    font-size: 24px;
+    text-align: center;
+    
+  }
+  &__lists{
+    height: 245px;
+    margin: 26px 10vw;
+    display: flex;
+    justify-content: space-around;
+    &__list{
+      align-items: center;
+      width: 220px;
+      height: 245px;
+      &__body{
+        background: $white;
+        color: $dark_gray;
+        ul{
+          display: flex;
+          justify-content: space-between;
+          line-height: 24px;
+          li{
+            #text{
+              &::before{
+                font-family: "Font Awesome 5 Free";
+                content: "\f005";
+                font-weight: 900;
+              }
+            }
+          }
+        }
+        p{
+          font-size: 10px;
+        }
+      }
+      
+    }
+  }
+}
+
+
+
+
+
+
+  // .head
+  //   ピックアップカテゴリー
+  //   .product_box
+  //     .product_box__title
+  //       新規投稿商品
+  //     %ul.product_box__lists
+  //       %li.product_box__lists__list
+  //         .product_box__lists__list__img
+  //           = image_tag 'pict/fish.png'
+  //         .product_box__lists__list__body
+  //           .product_box__lists__list__body__name
+  //             product3
+  //           %ul
+  //             %li
+  //               30000円
+  //             %li
+  //               #text
+  //                 0
