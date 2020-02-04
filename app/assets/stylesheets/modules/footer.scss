@@ -1,0 +1,47 @@
+.footer{
+  background-color: $footer_background;
+  color: $white;
+  &__contents{
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+    &__content{
+      text-align: center;
+      width: calc(1 / 3 * 100%);
+      margin: 0 2% 0 0;
+      flex-direction: column;
+      &__header{
+        font-size: 16px;
+        font-weight: bold;
+      }
+      &__lists{
+        margin-top: 20px;
+        font-size: 12px;
+        li{
+          line-height: 32px;
+          a{
+            color: $white;
+            text-decoration: none;
+            cursor: pointer;
+          }
+          a:hover{
+            color: $white;
+            text-decoration: underline;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  &__logo{
+    text-align: center;
+    img{
+      height: 46.34px;
+      width: 160px;
+    }
+  }
+  p{
+    text-align: center;
+    padding-bottom: 60px;
+  }
+}
