@@ -6,7 +6,8 @@
   .pickup_container__lists
     .pickup_container__lists__list
       .pickup_container__lists__list__img
-        = image_tag 'pict/fish.png',size: ("220x184")
+        = link_to "/items/1_path" do
+          = image_tag 'pict/fish.png',size: ("220x184")
       .pickup_container__lists__list__body
         .pickup_container__lists__list__body__name
           product3
