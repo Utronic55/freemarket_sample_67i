@@ -25,13 +25,10 @@
         display: flex;
         justify-content: space-between;
         &__input{
-          height: 32px;
+          height: 36px;
           width: calc(100vw - 120px);
           background: $white;
-          &__word{
-            height: 100%;
-            width: 100%;
-          }
+          border: 1px solid lightgray;
         }
         &__btn{
           height: 20px;
