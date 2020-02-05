@@ -1,8 +1,8 @@
 .pickup_container{
   width: 100vw;
   height: 346px;
-  background-color: $pickup_container_background;
-  padding: 40px 0;
+  background-color: #f8f8f8;
+  padding-top: 80px;
   &__head{
     font-weight: bold;
     height: 39px;
@@ -48,6 +48,7 @@
           font-size: 10px;
         }
       }
+      
     }
   }
 }
