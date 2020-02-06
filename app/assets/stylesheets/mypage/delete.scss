@@ -1,0 +1,21 @@
+// ログアウト画面
+.content{
+  background-color: whitesmoke;
+  width: 700px;
+  height: 180px;
+  float: right;
+    &__logout{
+      background-color: red;
+      width: 360px;
+      height: 60px;
+      margin: 0 auto;
+      margin-top: 60px;
+      font-size: 15px;
+      text-align: center;
+      padding: 18px;
+      a{
+        color: white;
+        text-decoration: none;
+      }
+  }
+}
