@@ -1,0 +1,53 @@
+.pickup_container{
+  width: 100vw;
+  height: 346px;
+  background-color: $pickup_container_background;
+  padding: 40px 0;
+  &__head{
+    font-weight: bold;
+    height: 39px;
+    font-size: 28px;
+    color: $black;
+    text-align: center;
+  }
+  &__title{
+    font-weight: bold;
+    height: 36px;
+    color: $light_blue;
+    font-size: 24px;
+    text-align: center;
+    
+  }
+  &__lists{
+    height: 245px;
+    margin: 26px 10vw;
+    display: flex;
+    justify-content: space-around;
+    &__list{
+      align-items: center;
+      width: 220px;
+      height: 245px;
+      &__body{
+        background: $white;
+        color: $dark_gray;
+        ul{
+          display: flex;
+          justify-content: space-between;
+          line-height: 24px;
+          li{
+            #text{
+              &::before{
+                font-family: "Font Awesome 5 Free";
+                content: "\f005";
+                font-weight: 900;
+              }
+            }
+          }
+        }
+        p{
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}
