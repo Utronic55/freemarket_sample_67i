@@ -1,0 +1,125 @@
+.single-wrapper{
+  .form_header{
+    height:150px;
+    text-align: center;
+    line-height: 150px;
+  }
+    .logo{
+      height: 40.55px;
+      width: 170px;
+      background:$l-color;
+      background-repeat: no-repeat;
+      background-size: 140px;
+      margin: 0 auto ;
+      position: absolute;
+      top:50px;
+      left: calc(50vw - 85px);
+    }
+  .single-main {
+    display: block;
+    &__inner {
+      max-width: none;
+      width: 456px;
+      margin: 0 auto;
+      background: #fff;
+      &__not_user {
+        padding: 40px 64px;
+        text-align: center;
+        box-sizing: border-box;
+        a {
+          display: block;
+          margin: 8px 0 0;
+          border: 1px solid #0099E8;
+          background-color: #0099E8;
+          color: #fff;
+          line-height: 40px;
+          text-decoration: none;
+        }
+      }
+      &__form {
+        padding: 32px 64px;
+        border-top: 1px solid #eee;
+      }
+      form {
+        .single-main__inner__form__groups {
+          padding: 24px 64px 32px;
+          border: 0;
+          &__group {
+            margin: 24px 0 0;
+            &:first-child {
+              margin: 0;
+            }
+            &:last-child {
+              border-style: none;
+            }
+            &__input {
+              width: 100%;
+              height: 48px;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background: #fff;
+              line-height: 1.5;
+              font-size: 16px;
+              box-sizing: border-box;
+              margin: 0;
+            }
+          }
+          &__login {
+            margin: 24px 0 0;
+            background: #EA352D;
+            border: 1px solid #EA352D;
+            color: #fff;
+            display: block;
+            width: 100%;
+            line-height: 48px;
+            font-size: 14px;
+            transition: all ease-out .3s;
+            cursor: pointer;
+            text-align: center;
+            padding: 0;
+          }
+          a {
+            margin: 40px 0 0;
+            display: block;
+            &:hover {
+              opacity: 0.5;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+  .login_form_footer{
+    height:150px;
+    padding:40px 0;
+    .nav{
+      font-size:15px;
+      text-align: center;
+      color:black;
+      text-decoration: none;
+      }
+      ul{
+        display: flex;
+        justify-content: center;
+      }
+        a{
+          color: black;
+          text-decoration: none;
+          margin-left:20px;
+        }
+    .login_footer-logo{
+      height: 40.55px;
+      width:150px;
+      margin:40px auto 0;
+      background:$l-color;
+      background-repeat: no-repeat;
+      background-size: 150px;
+      }
+    .small{
+      text-align: center;
+    }
+  }
+}    
+
