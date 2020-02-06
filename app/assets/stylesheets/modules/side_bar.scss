@@ -1,0 +1,30 @@
+// マイページ画面のサイドバー（共通）
+.side-bar{
+  position: absolute;
+  font-weight: 600;
+  .side-bar__list {
+    width: 350px;
+    margin-bottom: 30px;
+    padding: 0;
+    list-style-type: none;
+    background-color: white;
+    border: solid;
+  }
+    li a {
+      display: block;
+      padding: 8px 16px;
+      text-decoration: none;
+      color: #000000;
+    }
+    li:last-child {
+      border-bottom: none;
+    }
+    li a.active {
+      color: #ffffff;
+      background-color: gray;
+    }
+    li a:hover:not(.active) {
+      color: #ffffff;
+      background-color: grayscale($color: #9c8e8e);
+    }
+}
