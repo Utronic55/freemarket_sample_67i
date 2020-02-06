@@ -1,0 +1,35 @@
+.single-wrapper
+  .form_header
+    .logo
+  .single-main
+    .single-main__inner
+      .single-main__inner__not_user
+        %p="アカウントをお持ちでない方はこちら"
+        = link_to "/jp/signup" do
+          = "新規会員登録"
+      .single-main__inner__form
+      %form{action: "/", method: "get", novalidate: "novalidate"}
+        .single-main__inner__form__groups
+          .single-main__inner__form__groups__group
+            %input{type: "email", name: "email", value: "", placeholder: "メールアドレス", class: "single-main__inner__form__groups__group__input"}
+          .single-main__inner__form__groups__group
+            %input{type: "password", name: "password", placeholder: "パスワード", class: "single-main__inner__form__groups__group__input"}
+          .single-main__inner__form__groups__group
+          %button{type: "submit", class: "single-main__inner__form__groups__login"}ログイン
+          -# %input{type: "hidden", name: "login_callback", value: "/"}
+          -#   %input{type: "hidden", name: "login_callback",  value: "/"}
+          -# %input{type: "hidden", name: "__csrf_value", value: "/"}
+          = link_to "パスワードをお忘れの方", "/"
+  .form_footer
+    .nav
+      %ul
+        %li
+          = link_to "プライバシーポリシー", "#"
+        %li
+          = link_to "フリマ利用規約", "#"
+        %li
+          = link_to "特定商取引に関する表記", "#"
+    .footer-logo
+      = link_to "#" do
+        %p
+    .small © furima
