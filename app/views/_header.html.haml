@@ -3,6 +3,7 @@
     .icon
     .search_box
       .search_box__input
+        = text_field_tag :search, params[:search],class:"search_box__input__word", placeholder: 'キーワードから検索'
       .search_box__btn
         = link_to "#" do
           = image_tag 'icon/icon-search.png'

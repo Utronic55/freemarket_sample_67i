@@ -1,7 +1,7 @@
 .pickup_container{
   width: 100vw;
   height: 346px;
-  background-color: #f8f8f8;
+  background-color: $pickup_container_background;
   padding: 40px 0;
   &__head{
     font-weight: bold;
@@ -48,31 +48,6 @@
           font-size: 10px;
         }
       }
-      
     }
   }
 }
-
-
-
-
-
-
-  // .head
-  //   ピックアップカテゴリー
-  //   .product_box
-  //     .product_box__title
-  //       新規投稿商品
-  //     %ul.product_box__lists
-  //       %li.product_box__lists__list
-  //         .product_box__lists__list__img
-  //           = image_tag 'pict/fish.png'
-  //         .product_box__lists__list__body
-  //           .product_box__lists__list__body__name
-  //             product3
-  //           %ul
-  //             %li
-  //               30000円
-  //             %li
-  //               #text
-  //                 0
