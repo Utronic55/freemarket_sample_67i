@@ -1,5 +1,5 @@
-.single-wrapper
-.form_header{
+.single-wrapper{
+  .form_header{
     height:150px;
     text-align: center;
     line-height: 150px;
@@ -85,10 +85,15 @@
             &:hover {
               opacity: 0.5;
               text-decoration: underline;
-  .form_footer{
+            }
+          }
+        }
+      }
+    }
+  }
+  .login_form_footer{
     height:150px;
     padding:40px 0;
-  }
     .nav{
       font-size:15px;
       text-align: center;
@@ -104,7 +109,7 @@
           text-decoration: none;
           margin-left:20px;
         }
-    .footer-logo{
+    .login_footer-logo{
       height: 40.55px;
       width:150px;
       margin:40px auto 0;
@@ -114,12 +119,7 @@
       }
     .small{
       text-align: center;
-      }
-
-            }
-          }
-        }
-      }
     }
   }
+}    
 
