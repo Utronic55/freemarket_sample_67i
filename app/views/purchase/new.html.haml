@@ -1,0 +1,39 @@
+.container
+  .container__logo
+  .container__check-buy-item
+    .container__check-buy-item__header
+      購入内容の確認
+    .container__check-buy-item__buy-item-box
+      .container__check-buy-item__buy-item-box__image
+      .container__check-buy-item__buy-item-box__detail
+        .container__check-buy-item__buy-item-box__detail__item-name
+          ペンギン（２点）
+        .container__check-buy-item__buy-item-box__detail__price-box
+          .container__check-buy-item__buy-item-box__detail__price-box__total-price
+            ¥120000
+          .container__check-buy-item__buy-item-box__detail__price-box__tax
+            （税込）送料込み
+    %ul.container__check-buy-item__buy-price-table
+      %li.container__check-buy-item__buy-price-table__row
+        .container__check-buy-item__buy-price-table__row__price
+          支払い金額
+        .container__check-buy-itembuy-price-table__row__price-total
+          ¥120000
+    .container__check-buy-item__select-pay
+      .container__check-buy-item__select-pay__row
+        = render "share/credit-card-info"
+      = link_to "変更する", class: ".container__check-buy-item__select-pay__edit-btn"
+    .container__check-buy-item__address-box
+      .container__check-buy-item__address-box__deli-address
+        .container__check-buy-item__address-box__deli-address__haiso
+          配送先
+        .container__check-buy-item__address-box__deli-address__zyusyo
+          住所
+        .container__check-buy-item__address-box__deli-address__post-no
+          123-4567
+        .container__check-buy-item__address-box__deli-address__adress
+          東京都杉並区
+        .container__check-buy-item__address-box__deli-address__user-name
+          武豊
+      = link_to "変更する", class: ".container__check-buy-item__select-pay__edit-btn"
+    %input.container__check-buy-item__submit-btn{type: 'submit', value: '購入する'}
