@@ -1,2 +1,4 @@
 class CreditsController < ApplicationController
+
+  
 end
