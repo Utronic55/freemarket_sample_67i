@@ -1,0 +1,22 @@
+.select-pay{
+  width: 700px;
+  height: 358px;
+  background-color: #ecdbdb;
+  float: right;
+  &__header{
+    text-align: center;
+    font-size: 25px;
+    border-bottom: 1px solid #f5f5f5;
+    margin: 20px 0;
+  }
+
+  &__how-to-pay{
+    text-align: right;
+    margin: 40px;
+    border-top: 1px solid #f5f5f5;
+    a{
+      color: #0099e8;
+      text-decoration: none;
+    }
+  }
+}

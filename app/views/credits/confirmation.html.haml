@@ -1,0 +1,29 @@
+  -#  .main__content
+  -#   %section.chapter__container
+  -#     %h2.chapter__head 支払い方法
+  -#     .payment__main
+  -#       .payment__list
+  -#         .payment__list__content
+  -#           %h3.sub__head クレジットカード一覧
+  -#       .add__card
+  -#         .payment__list__content
+  -#           = link_to edit_credit_card_path(current_user), class: "red__btn", data: {"turbolinks" => false} do
+  -#             %i
+  -#             = icon('fas', 'credit-card', class: "card__icon")
+  -#             クレジットカードを追加する
+  -#       .not__regist
+  -#         %span 支払い方法
+
+
+
+.content-credit
+  .content-credit__pay
+    支払い方法
+  .content-credit__credit
+    .content-credit__credit__credit-list
+      クレジット一覧
+    .content-credit__credit__credit-add
+      = icon('fa','credit-card',class: 'far')
+      = link_to "クレジットカードを追加する", edit_credit_card_path(current_user), data: {"turbolinks" => false} do
+  .content-credit__howto-pay
+    = link_to "支払い方法について"
