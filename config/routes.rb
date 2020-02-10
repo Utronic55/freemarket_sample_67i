@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   }
   resources :items, only: [:new, :show]
   resources :users, only: [:new]
-  
+
     devise_scope :user do
   # 新規登録関連のパス
     get 'jp/signup' => 'users/registrations#index'
