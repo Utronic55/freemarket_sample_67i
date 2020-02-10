@@ -2,7 +2,7 @@
   width: 700px;
   height: 500px;
   background-color: #ecdbdb;
-  float: right;
+
   &__header{
     text-align: center;
     font-size: 25px;
@@ -27,7 +27,7 @@
           border-radius: 2px;
         }
       }
-      #name{
+      .name{
         width: 300px;
         font-size: 15px;
         border-radius: 6px;
@@ -52,7 +52,7 @@
         font-size: 13px;
       }
     }
-    &__submit{
+    .submit{
       font-size: 15px;
       background: red;
       width: 300px;

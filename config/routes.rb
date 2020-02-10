@@ -8,6 +8,17 @@ Rails.application.routes.draw do
   resources :items, only: [:new, :show]
   resources :users, only: [:new]
   
+  resources :credits, only: [:create, :show, :edit] do
+    collection do
+      post 'delete', to: 'credits#delete'
+      post 'show'
+    end
+    member do
+      get 'confirmation'
+    end
+  end 
+
+
     devise_scope :user do
   # 新規登録関連のパス
     get 'jp/signup' => 'users/registrations#index'
