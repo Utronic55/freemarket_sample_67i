@@ -166,9 +166,8 @@
                   .l-left{
                     width: 50%;
                     line-height: 48px;
-                    .input-price{
-                      float: right;
-                    }
+                  }
+                  .input-price{
                   }
                 }
                 &--commision{
@@ -191,9 +190,16 @@
                   padding: 24px 0;
                   display: flex;
                   justify-content: space-between;
+                  .l-center{
+                    width: 100px;
+                    height: 30px;
+                    font-size: 16px;
+                  }
                 }
                 .input-price{
+                  display: flex;
                   .input-price-area{
+                    margin-left: 10px;
                     height: 48px;
                     padding: 10px 16px 8px;
                     border-radius: 4px;

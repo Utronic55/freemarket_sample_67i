@@ -81,3 +81,4 @@ gem 'mini_magick'
 gem 'pry-rails'
 gem "font-awesome-sass"
 gem 'ancestry'
+gem 'jquery-rails'
