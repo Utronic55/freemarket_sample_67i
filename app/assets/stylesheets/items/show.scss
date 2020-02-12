@@ -49,6 +49,11 @@
       .detail_table{
         margin-bottom:20px;
         font-family: Arial, Helvetica, sans-serif;
+        &--group{
+          table{
+            margin:  0 auto;
+          }
+        }
       }
         table, td, th {
           border: 1px solid #595959;
@@ -85,11 +90,41 @@
       font-family: Arial, Helvetica, sans-serif;
       margin-top: 40px;
     }
-  
+
+    .l-single-container{
+      width: 700px;
+      margin: 0 auto;
+      .listing-item-change-box{
+        margin: 24px 0 24px 0;
+        background: #fff;
+        padding: 8px 16px 8px 16px;
+        text-align: center;
+        .btn-default{
+          margin: 16px 0 16px 0;
+        }
+        a{
+          background: #ea352d;
+          border: 1px solid #ea352d;
+          color: #fff;
+
+          display: block;
+          width: 100%;
+          line-height: 48px;
+          font-size: 14px;
+          border: 1px solid transparent;
+          -webkit-transition: all ease-out .3s;
+          transition: all ease-out .3s;
+          cursor: pointer;
+          text-align: center;
+        }
+      }
+    }
+
   .detail_footer{
     background-color:lavender;
     height:500px;
   }
+
   .detail_footer{
     background-color: #272727;
   }
