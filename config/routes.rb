@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     :registrations => 'users/registrations',
   :sessions => 'users/sessions'
   }
-  resources :items, only: [:new, :show]
+  resources :items, only: [:new, :show,:create]
   resources :users, only: [:new]
 
     devise_scope :user do
