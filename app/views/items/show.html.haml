@@ -61,7 +61,7 @@
           = link_to "商品の編集", class:'btn-default btn-red'
           %p.text-center
             or
-          =link_to "削除"
+          =link_to "削除", item_path(@item.id), method: :delete, class:'btn-default btn-gray'
           - if @item.id != @user.id
             =link_to "購入", new_item_path(@item.id),class:'btn-default btn-gray'
   .detail_footer
