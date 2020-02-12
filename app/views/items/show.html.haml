@@ -10,10 +10,11 @@
     - @item.item_images.each do |image|
       .detail_content_main_box-image
         .main__image
-          %img{:alt => "ライオンの画像", :border => "0", :height =>"100", :src=>"https://www.homepage-tukurikata.com/image/lion.jpg", :width => "150"}/
+          = link_to image_tag("https://www.homepage-tukurikata.com/image/lion.jpg", class:"link-icon.abtn"),"#"
+          %image_tag{:alt => "ライオンの画像", :border => "0", :height =>"100", :src=>"https://www.homepage-tukurikata.com/image/lion.jpg", :width => "150"}/
         .detail_content_main_box-subimage1
-          %img{:alt => "ライオンの画像", :border => "0", :height =>"100", :src=>"https://www.homepage-tukurikata.com/image/lion.jpg", :width => "150"}/
-          %img{:alt => "ライオンの画像", :border => "0", :height =>"100", :src=>"https://www.homepage-tukurikata.com/image/lion.jpg", :width => "150"}/
+          = link_to image_tag("https://www.homepage-tukurikata.com/image/lion.jpg", class:"link-icon"),"#"
+          = link_to image_tag("https://www.homepage-tukurikata.com/image/lion.jpg", class:"link-icon.gbtn"),"#"
       %br
       .detail_content_main_box-price
         .detail_content_main_price
