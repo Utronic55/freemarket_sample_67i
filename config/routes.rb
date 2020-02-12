@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
   root to: "top#index"
+  resources :items, only: [:new, :show,:destroy]
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
   :sessions => 'users/sessions'
   }
-  resources :items, only: [:new, :show]
   resources :users, only: [:new]
 
     devise_scope :user do
