@@ -14,29 +14,14 @@
               %span
                 必須
               %p 最大10枚までアップロードできます
+            - 10.times do
               = f.fields_for :item_images, local: true do |i|
                 %div
                   = i.file_field :image
                   = i.check_box :_destroy, id: 'check_box'
                   = i.hidden_field :id
-            -# #image-box-1
-            -#   - @item_images.each do |item_image|
-            -#     .item-img
-            -#       .item-img_content
-            -#         .item-img_content_icon
-            -#           %img{height: "100", src: "#{image.image}", width: "100", name: "product[images_attributes][#{@item.item_images.count}][src]"}
-            -#         .item-img_operetion
-            -#           .item-img_operetion_delete 削除
-            -#           .item-img_operetion_edit 編集
-            .sell-image_box-0#box
-              .input-area
-                = f.fields_for @item_images, local: true do |i|
-                  = i.file_field :image, type: 'file', value: '', id: 'img-file'
-                  %label{for: 'img-file', style: 'z-index: 1;'}
-                    %pre 
-                      :preserve
-                        ドラッグアンドドロップ
-                        またはクリックしてファイルをアップロード
+                  %label{for: 'img-file', style: 'display:none;'}
+                    %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
                       
           -# // 商品情報入力(商品名)
           .item__data--box
@@ -64,6 +49,13 @@
                   .select-wrap
                     .select-default
                     = f.select :category_id, options_from_collection_for_select(@category_parent_array, :id, :name), {prompt: "---"}, class: "select-default", id: "category"
+                  .select-wrap
+                    .select-default
+                    = f.select :category_id, options_from_collection_for_select(@category_child_array, :id, :name), {prompt: "---"}, class: "select-default", id: "category"
+                  .select-wrap
+                    .select-default
+                    = f.select :category_id, options_from_collection_for_select(@category_grandchild_array, :id, :name), {prompt: "---"}, class: "select-default", id: "category"
+
                 .item__data--box--group
                   = f.label :quality do
                     商品の状態
