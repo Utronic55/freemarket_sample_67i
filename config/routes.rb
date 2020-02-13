@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :items, only: [:new, :show]
   resources :users, only: [:new]
   resources :mypages, only: [:index, :new] 
-  resources :purchase, only: [:new]
+  resources :purchase, only: [:index]
   
   resources :credits, only: [:new, :create, :show] do
   collection do
