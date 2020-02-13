@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :mypages, only: [:index, :new] 
   resources :purchase, only: [:new]
   
-  resources :credits, only: [:create, :show, :new] do
+  resources :credits, only: [:new, :create, :show] do
   collection do
     post 'delete', to: 'credits#delete'
     post 'show'

@@ -4,13 +4,13 @@ class CreditsController < ApplicationController
   end
 
   def create
-
+    console.log
     if params['payjp-token'].blank?
       redirect_to action: "new"
     else
       customer = Payjp::Customer.create(
       card: params['payjp-token'],
-      metadata: {user_id: current_user.id}
+      metadata: {user_id: User(1).id}
       )
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
@@ -26,7 +26,7 @@ class CreditsController < ApplicationController
     # redirect_to action: "show" if card.exists?
   end
 
-  
+
   
 
   private
