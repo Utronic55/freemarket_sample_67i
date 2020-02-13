@@ -1,51 +1,68 @@
 .detail
   .detail_header
     .detail_header_top
+      = render './header'
     .detail_header_main FURIMA>ベビー・キッズ>ベビー服(男女兼用)> ~95cmアウター >product3
   .detail_content
     .detail_content_main_box
-      .detail_content_main_box-name 商品名
+      .detail_content_main_box-name
+        = @item.name
+    - @item.item_images.each do |image|
       .detail_content_main_box-image
-        %img{:alt => "ライオンの画像", :border => "0", :height => "350", :src => "https://www.homepage-tukurikata.com/image/lion.jpg", :width => "500"}/
-      .detail_content_main_box-subimage1
-        %img{:alt => "ライオンの画像", :border => "0", :height =>"100", :src=>"https://www.homepage-tukurikata.com/image/lion.jpg", :width => "150"}/
-        %img{:alt => "ライオンの画像", :border => "0", :height =>"100", :src=>"https://www.homepage-tukurikata.com/image/lion.jpg", :width => "150"}/
+        .main__image
+          = link_to image_tag("https://www.homepage-tukurikata.com/image/lion.jpg", class:"link-icon.abtn"),"#"
+          %image_tag{:alt => "ライオンの画像", :border => "0", :height =>"100", :src=>"https://www.homepage-tukurikata.com/image/lion.jpg", :width => "150"}/
+        .detail_content_main_box-subimage1
+          = link_to image_tag("https://www.homepage-tukurikata.com/image/lion.jpg", class:"link-icon"),"#"
+          = link_to image_tag("https://www.homepage-tukurikata.com/image/lion.jpg", class:"link-icon.gbtn"),"#"
       %br
       .detail_content_main_box-price
-        .detail_content_main_price ￥3,000
+        .detail_content_main_price
+          ￥
+          = @item.price
         .detail_content_main_tax (税込)送料込み
       %br
       .detail_content_main_name 商品名
-      .detail_table
+    .detail_table
+      .detail_table--group
         %table
           %tbody
             %tr
               %td 出品者
-              %td 井口
-            %tr
-              %td カテゴリ
-              %td 人間
-            %tr
-              %td ブランド
-              %td 男
+              %td
+                = @user.nickname
+          - if @item.size.present?
             %tr
               %td 商品のサイズ
-              %td XL
+              %td
+                = @item.size
             %tr
               %td 商品の状態
-              %td 子供嫌い
+              %td
+                = @item.delivery_method
             %tr
               %td 配送料の負担
               %td 送料別（購入者負担）
             %tr
               %td 配送元の地域
-              %td 神奈川県
+              %td
+                = @item.area
             %tr
               %td 発送日の目安
-              %td 1年後
+              %td
+                = @item.delivery_date
     .detail_content_link
       %p < 前の商品
       %p > 次の商品
-    .detail_content_related
-      ベビー・キッズ をもっと見る
+
+    - if @item.id == @user.id
+      .l-single-container
+        .listing-item-change-box
+          = link_to "商品の編集", class:'btn-default btn-red'
+          %p.text-center
+            or
+          =link_to "削除", item_path(@item.id), method: :delete, class:'btn-default btn-gray'
+          - if @item.id != @user.id
+            =link_to "購入", new_item_path(@item.id),class:'btn-default btn-gray'
   .detail_footer
+    = render './footer'
