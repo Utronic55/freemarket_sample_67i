@@ -18,10 +18,10 @@
     .lists_right
       .lists_right__item
         -if user_signed_in?
-          = link_to "/users/sign_out" do
+          = link_to destroy_user_session_path do
             ="ログアウト"
         -else
-          = link_to "/users/sign_in" do
+          = link_to new_user_session_path do
             ="ログイン"
-          = link_to "/users/sign_up" do
+          = link_to new_user_registration_path do
             ="新規登録"

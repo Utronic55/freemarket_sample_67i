@@ -1,7 +1,7 @@
 .register_form
   .form_header
     .logo
-      = link_to "/" do
+      = link_to "#" do
         -# %img{ src: "logo.png", alt: "logo" }
         
   .register_form_content
@@ -18,7 +18,6 @@
             = f.text_field :nickname, { class: 'signup_register_input-has-error', placeholder: '例) メルカリ太郎' }
           - else
             = f.text_field :nickname, { class: 'signup_register_input-default', placeholder: '例) メルカリ太郎' }
-          -# =  render partial: 'error-messages', locals: { user: @user, column: "nickname"}
 
         .form-group
           = f.label "メールアドレス"
@@ -29,7 +28,6 @@
             = f.email_field :email, { class: 'signup_register_input-has-error', placeholder: 'PC・携帯どちらでも可' }
           - else
             = f.email_field :email, { class: 'signup_register_input-default', placeholder: 'PC・携帯どちらでも可' }
-          -# =  render partial: 'error-messages', locals: { user: @user, column: "email"}
 
         .form-group
           = f.label "パスワード"
@@ -40,7 +38,6 @@
             = f.password_field :password, { class: 'signup_register_input-has-error', placeholder: '7文字以上' }
           - else
             = f.password_field :password, { class: 'signup_register_input-default', placeholder: '7文字以上' }
-          -# =  render partial: 'error-messages', locals: { user: @user, column: "password"}
 
         .form-group
           = f.label"パスワード確認"
@@ -51,7 +48,6 @@
             = f.password_field :password_confirmation, { class: 'signup_register_input-has-error', placeholder: '7文字以上' }
           - else
             = f.password_field :password_confirmation, { class: 'signup_register_input-default', placeholder: '7文字以上' }
-          -# =  render partial: 'error-messages', locals: { user: @user, column: "password_confirmation"}
 
         .form-group
         %label 本人確認
@@ -69,7 +65,6 @@
             = f.text_field :last_name, { class: 'signup_register_input-has-error', placeholder: '例) 井口' }
           - else
             = f.text_field :last_name, { class: 'signup_register_input-default', placeholder: '例) 井口' }
-          -#  =  render partial: 'error-messages', locals: { user: @user, column: "last_name"}
 
         .form-group
           = f.label"名"
@@ -80,7 +75,6 @@
             = f.text_field :first_name, { class: 'signup_register_input-has-error', placeholder: '例) 大輔' }
           - else
             = f.text_field :first_name, { class: 'signup_register_input-default', placeholder: '例) 大輔' }
-          -# =  render partial: 'error-messages', locals: { user: @user, column: "first_name"}
 
         .form-group
           =f.label "姓(カナ 全角)"
@@ -91,7 +85,6 @@
             = f.text_field :last_name_kana, { class: 'signup_register_input-has-error', placeholder: '例) イグチ' }
           - else
             = f.text_field :last_name_kana, { class: 'signup_register_input-default', placeholder: '例) イグチ' }
-          -# =  render partial: 'error-messages', locals: { user: @user, column: "last_name_kana"}
 
         .form-group
           =f.label "名(カナ 全角)"
@@ -102,7 +95,6 @@
             = f.text_field :first_name_kana, { class: 'signup_register_input-has-error', placeholder: '例) ダイスケ' }
           - else
             = f.text_field :first_name_kana, { class: 'signup_register_input-default', placeholder: '例) ダイスケ' }
-          -# =  render partial: 'error-messages', locals: { user: @user, column: "first_name_kana"}
 
         .form-group2
           =f.label"生年月日"
