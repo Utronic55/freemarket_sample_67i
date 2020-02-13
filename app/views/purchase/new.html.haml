@@ -1,3 +1,4 @@
+= render "/header"
 .container
   .container__logo
   .container__check-buy-item
@@ -5,6 +6,7 @@
       購入内容の確認
     .container__check-buy-item__buy-item-box
       .container__check-buy-item__buy-item-box__image
+        %img{src: "https://cdn.pixabay.com/photo/2014/05/04/13/50/gentoo-penguins-337589_1280.jpg"}/
       .container__check-buy-item__buy-item-box__detail
         .container__check-buy-item__buy-item-box__detail__item-name
           ペンギン（２点）
@@ -35,3 +37,7 @@
           武豊
       = link_to "変更する", class: ".container__check-buy-item__select-pay__edit-btn"
     %input.container__check-buy-item__submit-btn{type: 'submit', value: '購入する'}
+.footer
+  = render './footer'
+.purchase_btn
+  = render './purchase_btn'

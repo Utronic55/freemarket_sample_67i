@@ -7,16 +7,18 @@ Rails.application.routes.draw do
   root to: "top#index"
   resources :items, only: [:new, :show]
   resources :users, only: [:new]
+  resources :mypages, only: [:index, :new] 
+  resources :purchase, only: [:new]
   
-  resources :credits, only: [:create, :show, :edit] do
-    collection do
-      post 'delete', to: 'credits#delete'
-      post 'show'
-    end
-    member do
-      get 'confirmation'
-    end
-  end 
+  resources :credits, only: [:create, :show, :new] do
+  collection do
+    post 'delete', to: 'credits#delete'
+    post 'show'
+  end
+  member do
+    get 'confirmation'
+  end
+end 
 
 
     devise_scope :user do

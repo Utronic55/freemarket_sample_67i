@@ -1,15 +1,25 @@
-.select-pay
-  .select-pay__header
-    支払い方法
-  .select-pay__clearfix
-    .select-pay__clearfix__detail-card-info
-      .card-info__header
-        クレジットカード一覧
-      .card-info__card-company
-        visa
-      .card-info__card-no
-        ********3456
-      .card-info__card-expiration
-        1/25
-    .select-pay__clearfix__delete-card-info
-      = link_to "削除する", class: 'select-pay__clearfix__delete-card-info__delete-btn'
+= render "/header"
+.wrapper
+  = render "share/side_bar"
+  .select-pay
+    .select-pay__header
+      支払い方法
+    .select-pay__clearfix
+      .select-pay__clearfix__detail-card-info
+        .card-info__header
+          クレジットカード一覧
+        .card-info__card-company
+          visa
+        .card-info__card-no
+          ********3456
+        .card-info__card-expiration
+          1/25
+      .select-pay__clearfix__delete-card-info
+        -# "#"にcredit/deleteのパスいれる
+        = form_tag("#", method: :post, id: 'charge-form',  name: "inputForm") do  
+          %input{ type: "hidden", name: "card_id", value: "" }
+          %button.select-pay__clearfix__delete-card-info__delete-btn 削除する
+.footer
+  = render './footer'
+.purchase_btn
+  = render './purchase_btn'
