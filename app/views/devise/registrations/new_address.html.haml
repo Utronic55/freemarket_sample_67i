@@ -1,0 +1,75 @@
+.area_form
+  .form_header
+    .logo
+      = link_to "#" do
+        -# %img{ src: "logo.png", alt: "logo" }
+  .area_form_content
+    .area_form_content__head
+      %h1="住所登録・電話番号登録"
+    = form_with model: @address, local: true, url: addresses_path, method: 'POST', class: 'signup_register_form', novalidate: 'novalidate' do |f|
+      .area_form_content__main
+        .form-group
+          = f.label '郵便番号'
+          %span.form-repuire 必須
+          %br
+          - if @user.errors.full_messages_for(:number).any?
+            %p="未入力です"
+            = f.text_field :number, { class: 'signup_register_input-has-error', placeholder: '例) 2500113'}
+          - else
+            = f.text_field :number, { class: 'signup_register_input-default', placeholder: '例) 2500113' }
+
+        .form-group
+          = f.label "都道府県"
+          %span.form-repuire 必須
+          %br
+          - if @user.errors.full_messages_for(:prefecture).any?
+            %p="未入力です"
+            = f.text_field :prefecture, { class: 'signup_register_input-has-error', placeholder: '例) 神奈川県' }
+          - else
+            = f.text_field :prefecture, { class: 'signup_register_input-default', placeholder: '例) 神奈川県' }
+
+        .form-group
+          = f.label "市町村区"
+          %span.form-repuire 必須
+          %br
+          - if @user.errors.full_messages_for(:city).any?
+            %p="未入力です"
+            = f.text_field :city, { class: 'signup_register_input-has-error', placeholder: '例) 南足柄市' }
+          - else
+            = f.text_field :city, { class: 'signup_register_input-default', placeholder: '例) 岩原' }
+
+        .form-group
+          = f.label "番地"
+          %span.form-repuire 必須
+          %br
+          - if @user.errors.full_messages_for(:town).any?
+            %p="未入力です"
+            = f.text_field :town, { class: 'signup_register_input-has-error', placeholder: '例) 岩原' }
+          - else
+            = f.text_field :town, { class: 'signup_register_input-default', placeholder: '例) 岩原' }
+
+        .form-group
+          = f.label "建物名"
+          %span.form-repuire_any (任意)
+          %br
+          - if @user.errors.full_messages_for(:building).any?
+            = f.text_field :building, { class: 'signup_register_input-has-error', placeholder: '例) 岩原ハイツ' }
+          - else
+            = f.text_field :building, { class: 'signup_register_input-default', placeholder: '例) 岩原ハイツ' }
+          %br
+
+        .form-group
+          = f.label "電話番号"
+          %span.form-repuire 必須
+          %br
+          - if @user.errors.full_messages_for(:phone_number).any?
+            %p="入力が正しくありません"
+            = f.text_field :phone_number, { class: 'signup_register_input-has-error', placeholder: '例) 09012345678' }
+          - else
+            = f.text_field :phone_number, { class: 'signup_register_input-default', placeholder: '例) 09012345678' }
+          %br
+        %br
+      = f.submit '次へ進む', class: 'register_submit_button'
+
+  = render partial: "devise/shared/form_footer"
+
