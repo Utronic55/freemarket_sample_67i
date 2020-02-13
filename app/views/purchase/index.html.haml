@@ -35,8 +35,8 @@
           東京都杉並区
         .container__check-buy-item__address-box__deli-address__user-name
           武豊
-      = link_to "変更する", class: ".container__check-buy-item__select-pay__edit-btn"
-    %input.container__check-buy-item__submit-btn{type: 'submit', value: '購入する'}
+  = form_tag(action: :pay, method: :post) do
+    %button 購入する
 .footer
   = render './footer'
 .purchase_btn
