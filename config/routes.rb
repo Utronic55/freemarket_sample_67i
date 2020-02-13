@@ -1,23 +1,18 @@
 Rails.application.routes.draw do
 
-  root to: "top#index"
-  resources :items, only: [:new, :show,:destroy]
-  devise_for :users, :controllers => {
-    :registrations => 'users/registrations',
-  :sessions => 'users/sessions'
-  }
-  resources :users, only: [:new]
 
-    devise_scope :user do
-  # 新規登録関連のパス
-    get 'jp/signup' => 'users/registrations#index'
-    get 'jp/signup/registration' => 'users/registrations#new'
-    post 'jp/signup/registration' => 'users/registrations#create'
-    get 'jp/signup/address' => 'users/registrations#address'
-    patch 'jp/signup/address' => 'users/registrations#address_create'
-    get 'jp/signup/complete' => 'users/registrations#registration_complete'
-  # ログイン関連のパス
-    get 'jp/login' => 'users/sessions#new'
-    post 'jp/login' => 'users/sessions#create'
-    end
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+  }
+  devise_scope :user do
+    get 'addresses', to: 'users/registrations#new_address'
+    post 'addresses', to: 'users/registrations#create_address'
+  end
+
+
+  root to: "top#index"
+
+  resources :items, only: [:new, :show]
+  resources :users, only: [:index]
+   
 end
