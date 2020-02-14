@@ -3,7 +3,8 @@
   = render "share/side_bar"
   .content
     .content__logout  
-      = link_to "ログアウト", method: :delete, class: "btn" 
+      = link_to destroy_user_session_path do
+        = "ログアウト"
 .footer
   = render './footer'
 .purchase_btn
