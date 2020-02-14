@@ -15,7 +15,14 @@ Rails.application.routes.draw do
   resources :items, only: [:new, :show]
   resources :users, only: [:new, :index]
   resources :mypages, only: [:index, :new] 
-  resources :purchase, only: [:index]
+
+  resources :purchase, only: [:index] do
+    collection do
+      get 'index', to: 'purchase#index'
+      post 'pay', to: 'purchase#pay'
+      get 'done', to: 'purchase#done'
+    end
+  end
   
   resources :credits, only: [:new, :create, :show] do
   collection do

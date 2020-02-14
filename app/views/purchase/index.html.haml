@@ -9,10 +9,11 @@
         %img{src: "https://cdn.pixabay.com/photo/2014/05/04/13/50/gentoo-penguins-337589_1280.jpg"}/
       .container__check-buy-item__buy-item-box__detail
         .container__check-buy-item__buy-item-box__detail__item-name
-          ペンギン（２点）
+          = @item.name
         .container__check-buy-item__buy-item-box__detail__price-box
           .container__check-buy-item__buy-item-box__detail__price-box__total-price
-            ¥120000
+            ¥
+            = @item.price
           .container__check-buy-item__buy-item-box__detail__price-box__tax
             （税込）送料込み
     %ul.container__check-buy-item__buy-price-table
@@ -20,23 +21,11 @@
         .container__check-buy-item__buy-price-table__row__price
           支払い金額
         .container__check-buy-itembuy-price-table__row__price-total
-          ¥120000
-    .container__check-buy-item__register-credit-info
-      = link_to "クレジットカードを登録"
-    .container__check-buy-item__address-box
-      .container__check-buy-item__address-box__deli-address
-        .container__check-buy-item__address-box__deli-address__haiso
-          配送先
-        .container__check-buy-item__address-box__deli-address__zyusyo
-          住所
-        .container__check-buy-item__address-box__deli-address__post-no
-          123-4567
-        .container__check-buy-item__address-box__deli-address__adress
-          東京都杉並区
-        .container__check-buy-item__address-box__deli-address__user-name
-          武豊
-  = form_tag(action: :pay, method: :post) do
-    %button 購入する
+          ¥
+          = @item.price
+    .container__check-buy-item__btn
+      = form_tag(action: :pay, method: :post) do
+        %button 購入する
 .footer
   = render './footer'
 .purchase_btn
