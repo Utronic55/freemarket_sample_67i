@@ -7,21 +7,26 @@
         %h2
           商品の情報を入力
         = form_with model: @item, url: items_path, local: true, class: "item__data" do |f|
-          -# // 商品情報入力(出品画像)
-          .item__data--upload
-            %h3
-              出品画像
-              %span
-                必須
-              %p 最大10枚までアップロードできます
-            - 10.times do
-              = f.fields_for :item_images, local: true do |i|
-                %div
-                  = i.file_field :image
-                  = i.check_box :_destroy, id: 'check_box'
-                  = i.hidden_field :id
-                  %label{for: 'img-file', style: 'display:none;'}
-                    %pre.visible-pc ドラッグアンドドロップまたはクリックしてファイルをアップロード
+          // 画像アップロード
+          .sell_form__main__box
+            .sell_upload_box 
+              
+              %h3.sell_upload_box__head
+                = f.label :image, "出品画像"
+                %span 必須
+              %p.info 最大10枚までアップロードできます
+              .sell_dropbox
+                ドラッグアンドドロップ
+                %br
+                またはクリックしてファイルをアップロード
+                .image-box__container
+                  #image-box-1
+                  .item-num-0
+                  = f.fields_for :item_images do |i|
+                    .input-area#image-box__container
+                      = i.file_field :item_images,type: 'file', name: "item[item_images_attributes][][image]", value:"image", style: "display:none", id:"img-file",required: true
+                      %label.input{for: "img-file"}
+                        %i.fas.fa-camera
                       
           -# // 商品情報入力(商品名)
           .item__data--box
@@ -46,16 +51,11 @@
                   カテゴリー
                   %span.form-require
                     必須
-                  .select-wrap
+                  .select-wrap#category
                     .select-default
-                    = f.select :category_id, options_from_collection_for_select(@category_parent_array, :id, :name), {prompt: "---"}, class: "select-default", id: "category"
-                  .select-wrap
-                    .select-default
-                    = f.select :category_id, options_from_collection_for_select(@category_child_array, :id, :name), {prompt: "---"}, class: "select-default", id: "category"
-                  .select-wrap
-                    .select-default
-                    = f.select :category_id, options_from_collection_for_select(@category_grandchild_array, :id, :name), {prompt: "---"}, class: "select-default", id: "category"
-
+                    -# = f.select :category_id, options_from_collection_for_select(@category_parent_array, :id, :name), {prompt: "---"}, class: "select-default", id: "category"
+                    = f.select :category_id, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                    %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
                 .item__data--box--group
                   = f.label :quality do
                     商品の状態
@@ -124,7 +124,7 @@
           .item__data--box
             %p
               禁止されている出品、行為を必ずご確認ください。</br>
-              またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブンドの販売は犯罪であり処罰される可能性があります。
+              またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。
             %button.item__data--box--btn{type: "submit"}
               .name
                 出品する

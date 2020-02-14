@@ -82,12 +82,39 @@
               margin-left: 2%;
             }
           }
+        .sell_form__main__box{
+          padding: 40px;
+          border-top: 1px solid #eee;
+          height: 320px;
+          .sell_upload_box {
+            h3.sell_upload_box__head{
+              span{
+                @include clearfix();
+              }
+            }
+          p.info{
+          }
+          .sell_dropbox{
+            .image-box__container{
+              flex-wrap: wrap;
+              display: flex;
+              width: 100%;
+              text-align: center;
+              font-size: 14px;
+              line-height: 1.5;
+              display: flex;
+              #image-box-1{
+              }
+            }
+          }
+          }
+        }
 
          // 商品情報入力(商品名)
          .item__data--box{
             padding: 40px;
             border-top: 1px solid #eee;
-            height: 260px;
+            height: 320px;
             &--first{
               span{
                 @include clearfix();
