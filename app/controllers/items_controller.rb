@@ -21,13 +21,14 @@ class ItemsController < ApplicationController
     #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
-    
-  end
   
   def create
     @item = Item.new(item_params)
-    @item.save!
-    redirect_to root_path
+    if @item.save
+      redirect_to root_path
+    else
+      render :new
+    end
 
   end
 
@@ -36,13 +37,16 @@ class ItemsController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  private
-  def item_params
-    params.require(:item).permit(:name,:text,:category_id,:quality,:delivery_charge,:area,:delivery_date,:price,item_images_attributes: [:image])#.merge(user_id: current_user.id)
-  end
-
+  
 end
-  def destroy
+
+private
+
+def item_params
+  params.require(:item).permit(:name,:text,:category_id,:quality,:delivery_charge,:area,:delivery_date,:price,item_images_attributes: [:image])#.merge(user_id: current_user.id)
+end
+
+def destroy
     item = Item.find(params[:id])
     item.destroy
     redirect_to root_path, notice: "投稿内容を削除しました"

@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_02_12_060921) do
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
@@ -52,11 +53,6 @@ ActiveRecord::Schema.define(version: 2020_02_12_060921) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "signups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", null: false
     t.string "encrypted_password", default: "", null: false
@@ -73,7 +69,6 @@ ActiveRecord::Schema.define(version: 2020_02_12_060921) do
     t.integer "birth_day", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "password_confirmation"
     t.string "password"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
