@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_14_061152) do
+ActiveRecord::Schema.define(version: 2020_02_15_044348) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "number", null: false
@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 2020_02_14_061152) do
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
@@ -43,17 +42,22 @@ ActiveRecord::Schema.define(version: 2020_02_14_061152) do
   create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.integer "item_id"
     t.string "image"
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "category_id"
+    t.integer "category_id", null: false
     t.integer "child_category_id"
     t.integer "grandchild_category_id"
+
+    t.integer "buyer_id", null: false
+    t.integer "saler_id", null: false
     t.string "name", null: false
     t.integer "price", null: false
     t.text "text", limit: 4294967295, null: false
+    t.string "size", null: false
     t.string "quality", null: false
     t.string "delivery_charge", null: false
     t.integer "area_id", null: false
@@ -79,6 +83,7 @@ ActiveRecord::Schema.define(version: 2020_02_14_061152) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password"
+    t.string "password_confirmation"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
