@@ -54,7 +54,7 @@
                   .select-wrap#category
                     .select-default
                     -# = f.select :category_id, options_from_collection_for_select(@category_parent_array, :id, :name), {prompt: "---"}, class: "select-default", id: "category"
-                    = f.select :category_id, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                    = f.select :category_id, options_for_select(Category.where(ancestry: nil).map{|c|[c.name, c.id]}, ['---']), {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'} 
                     %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
                 .item__data--box--group
                   = f.label :quality do
@@ -82,7 +82,7 @@
                 %span
                   必須
                 .select-wrap
-                = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+                = f.collection_select :area_id, Area.all, :id, :name
               .sell__form--box
                 .item__data--box--group
                   = f.label :delivery_date do

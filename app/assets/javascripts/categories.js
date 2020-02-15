@@ -1,7 +1,7 @@
 $(function(){
   // カテゴリーセレクトボックスのオプションを作成
   function appendOption(category){
-    var html = `<option value="${category.name}" data-category="${category.id}">${category.name}</option>`;
+    var html = `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
     return html;
   }
   // 子カテゴリーの表示作成
@@ -9,7 +9,7 @@ $(function(){
     var childSelectHtml = '';
     childSelectHtml = `<div class='select-default__added' id= 'children_wrapper'>
                         <div class='select-default__box'>
-                          <select class="select-default__box--select" id="child_category" name="category_id">
+                          <select class="select-default__box--select" id="child_category" name="item[child_category_id]">
                             <option value="---" data-category="---">---</option>
                             ${insertHTML}
                           <select>
@@ -23,7 +23,7 @@ $(function(){
     var grandchildSelectHtml = '';
     grandchildSelectHtml = `<div class='select-default__added' id= 'grandchildren_wrapper'>
                               <div class='select-default__box'>
-                                <select class="select-default__box--select" id="grandchild_category" name="category_id">
+                                <select class="select-default__box--select" id="grandchild_category" name="item[grandchild_category_id]">
                                   <option value="---" data-category="---">---</option>
                                   ${insertHTML}
                                 </select>
@@ -34,9 +34,9 @@ $(function(){
   }
   // 親カテゴリー選択後のイベント
   $('#parent_category').on('change', function(){
-    console.log('aaaaa')
     var parentCategory = document.getElementById('parent_category').value; //選択された親カテゴリーの名前を取得
     if (parentCategory != "---"){ //親カテゴリーが初期値でないことを確認
+      console.log('kashi')
       $.ajax({
         url: 'get_category_children',
         type: 'GET',
@@ -46,8 +46,8 @@ $(function(){
       .done(function(children){
         $('#children_wrapper').remove(); //親が変更された時、子以下を削除するする
         $('#grandchildren_wrapper').remove();
-        $('#size_wrapper').remove();
-        $('#brand_wrapper').remove();
+        // $('#size_wrapper').remove();
+        // $('#brand_wrapper').remove();
         var insertHTML = '';
         children.forEach(function(child){
           insertHTML += appendOption(child);
@@ -60,8 +60,6 @@ $(function(){
     }else{
       $('#children_wrapper').remove(); //親カテゴリーが初期値になった時、子以下を削除するする
       $('#grandchildren_wrapper').remove();
-      $('#size_wrapper').remove();
-      $('#brand_wrapper').remove();
     }
   });
   // 子カテゴリー選択後のイベント
@@ -77,8 +75,6 @@ $(function(){
       .done(function(grandchildren){
         if (grandchildren.length != 0) {
           $('#grandchildren_wrapper').remove(); //子が変更された時、孫以下を削除するする
-          $('#size_wrapper').remove();
-          $('#brand_wrapper').remove();
           var insertHTML = '';
           grandchildren.forEach(function(grandchild){
             insertHTML += appendOption(grandchild);
