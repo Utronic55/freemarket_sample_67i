@@ -48,8 +48,10 @@ ActiveRecord::Schema.define(version: 2020_02_15_044348) do
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "brand_id", null: false
     t.integer "category_id", null: false
+    t.integer "child_category_id"
+    t.integer "grandchild_category_id"
+
     t.integer "buyer_id", null: false
     t.integer "saler_id", null: false
     t.string "name", null: false
@@ -57,9 +59,8 @@ ActiveRecord::Schema.define(version: 2020_02_15_044348) do
     t.text "text", limit: 4294967295, null: false
     t.string "size", null: false
     t.string "quality", null: false
-    t.integer "deliverey_charge", null: false
-    t.string "area", null: false
-    t.string "delivery_method", null: false
+    t.string "delivery_charge", null: false
+    t.integer "area_id", null: false
     t.string "delivery_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
