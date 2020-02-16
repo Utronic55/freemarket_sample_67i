@@ -6,10 +6,11 @@
       .item__content
         %h2
           商品の情報を入力
-        = form_with model: @item, url: items_path, local: true, class: "item__data" do |f|
+        = form_with model: @item, url: items_path, method: :patch, local: true, class: "item__data" do |f|
           // 画像アップロード
           .sell_form__main__box
             .sell_upload_box 
+              
               %h3.sell_upload_box__head
                 = f.label :image, "出品画像"
                 %span 必須
@@ -35,6 +36,7 @@
                 %span 必須
               %div
                 = f.text_field :name, placeholder: "商品名 (必須 40文字まで)", class: "input-default"
+
             .item__data--box--group
               = f.label :text do
                 商品の説明
@@ -53,7 +55,7 @@
                   .select-wrap#category
                     .select-default
                     -# = f.select :category_id, options_from_collection_for_select(@category_parent_array, :id, :name), {prompt: "---"}, class: "select-default", id: "category"
-                    = f.select :category_id, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                    -# = f.select :category_id, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
                     %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
                 .item__data--box--group
                   = f.label :quality do
