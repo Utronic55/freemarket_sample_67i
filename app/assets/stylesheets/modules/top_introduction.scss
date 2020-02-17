@@ -1,6 +1,6 @@
 .top_introduction{
   padding: 60px 100px;
-  .subtitle{
+  &__subtitle{
     text-align: center;
     color: $black;
     font-size: 26px;
@@ -8,7 +8,7 @@
     margin:0 0 25px;
     position: relative;
   }
-  .after{
+  &__after{
     position: absolute;
     left: calc(50vw - 135px);
     margin-top: 15px;
@@ -17,9 +17,9 @@
     height: 4px;
     background: $light_blue;
   }
-  .lists{
+  &__lists{
     display: flex;
-    .list{
+    &__list{
       margin: 16px 5% 0 0;
       &__img_1{
         background: $p-01;

@@ -1,0 +1,15 @@
+.complete_form 
+  .form_header 
+    .logo
+      = link_to "#" do
+        -# %img{ src: "logo.png", alt: "logo" }
+  .complete_form_content
+    .complete_form_content__head
+      %h1= "会員登録完了"
+    .complete_form_content__main
+      .complete_submit
+        = link_to root_path do
+          %label2
+            ="Lets start Furima!!"
+
+  = render partial: "devise/shared/form_footer"
