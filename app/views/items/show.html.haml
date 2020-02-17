@@ -1,7 +1,7 @@
 .detail
   .detail_header
     .detail_header_top
-      = render './header'
+      = render 'share/header'
     .detail_header_main FURIMA>ベビー・キッズ>ベビー服(男女兼用)> ~95cmアウター >product3
   .detail_content
     .detail_content_main_box
@@ -65,4 +65,4 @@
           - if @item.id != @user.id
             =link_to "購入", new_item_path(@item.id),class:'btn-default btn-gray'
   .detail_footer
-    = render './footer'
+    = render 'share/footer'
