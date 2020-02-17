@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2020_02_15_044348) do
     t.integer "category_id"
     t.integer "child_category_id"
     t.integer "grandchild_category_id"
-    t.integer "buyer_id", null: false
+    t.integer "buyer_id"
     t.integer "saler_id", null: false
     t.string "name", null: false
     t.integer "price", null: false
