@@ -48,6 +48,9 @@ group :development, :test do
 
   gem 'capistrano3-unicorn'
   gem 'pry-byebug'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
 end
 
 group :development do
