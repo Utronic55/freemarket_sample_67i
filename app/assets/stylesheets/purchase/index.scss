@@ -1,75 +1,106 @@
-.container__check-buy-item{
+.purchase{
   width: 700px;
   height: 580px;
   margin: 0 auto;
   text-align: center;
-  &__header{
-    font-size: 22px;
-    padding: 32px;
-    border-bottom: 1px solid #f5f5f5;
-  }
-  &__buy-item-box{
-    display: flex;
-    justify-content: center;
-    padding: 20px 0;
-    border-bottom: 1px solid #f5f5f5;
-    img{
-      height: 150px;
-      width: 150px;
+    &__header{
+      font-size: 22px;
+      padding: 32px;
+      border-bottom: 1px solid #f5f5f5;
     }
-    &__detail{
-      margin: 20px 0 0 20px;
-      &__price-box{
-        display: flex;
-        margin-top: 20px;
-      }
-    }
-  }
-  &__buy-price-table{
-    border-bottom: 1px solid #f5f5f5;
-    padding: 20px 0;
-    &__row{
+    &__buy-item-box{
       display: flex;
       justify-content: center;
-      font-size: 20px;
-      &__price{
-        margin-right: 100px;
+      padding: 20px 0;
+      border-bottom: 1px solid #f5f5f5;
+      img{
+        height: 150px;
+        width: 150px;
+      }
+      &__detail{
+        margin: 20px 0 0 20px;
+        &__price-box{
+          display: flex;
+          margin-top: 20px;
+        }
       }
     }
-  }
-  &__register-credit-info{
-    display: flex;
-    justify-content: center;
-    border-bottom: 1px solid #f5f5f5;
-    padding: 20px 0;
-    a{
-      text-decoration: none;
-    }
-  }
-  &__address-box{
-    display: flex;
-    justify-content: center;
-    border-bottom: 1px solid #f5f5f5;
-    padding: 20px 0;
-    &__deli-address{
-      &__haiso{
-        font-weight: 600;
-        margin-bottom: 10px;
+    &__buy-price-table{
+      border-bottom: 1px solid #f5f5f5;
+      padding: 20px 0;
+      &__row{
+        display: flex;
+        justify-content: center;
+        font-size: 20px;
+        &__price{
+          margin-right: 100px;
+        }
       }
     }
-    a{
-      text-decoration: none;
-      margin-left: 100px;
+    &__register-credit-info{
+      display: flex;
+      justify-content: center;
+      border-bottom: 1px solid #f5f5f5;
+      padding: 20px 0;
+      a{
+        text-decoration: none;
+      }
     }
-  }
-
+    &__btn{
+      font-size: 15px;
+      background: red;
+      width: 300px;
+      height: 50px;
+      color: white;
+      margin-top: 25px;
+    }
 }
 
-.btn{
-  font-size: 15px;
-  background: red;
-  width: 300px;
-  height: 50px;
-  color: white;
-  margin-top: 25px;
-}
+//       &__buy-price-table{
+//         border-bottom: 1px solid #f5f5f5;
+//         padding: 20px 0;
+//         &__row{
+//           display: flex;
+//           justify-content: center;
+//           font-size: 20px;
+//           &__price{
+//             margin-right: 100px;
+//           }
+//         }
+//       }
+//       &__register-credit-info{
+//         display: flex;
+//         justify-content: center;
+//         border-bottom: 1px solid #f5f5f5;
+//         padding: 20px 0;
+//         a{
+//           text-decoration: none;
+//         }
+//       }
+//       &__address-box{
+//         display: flex;
+//         justify-content: center;
+//         border-bottom: 1px solid #f5f5f5;
+//         padding: 20px 0;
+//         &__deli-address{
+//           &__haiso{
+//             font-weight: 600;
+//             margin-bottom: 10px;
+//           }
+//         }
+//         a{
+//           text-decoration: none;
+//           margin-left: 100px;
+//         }
+//       }
+
+// }
+
+//     btn{
+//       font-size: 15px;
+//       background: red;
+//       width: 300px;
+//       height: 50px;
+//       color: white;
+//       margin-top: 25px;
+//     }

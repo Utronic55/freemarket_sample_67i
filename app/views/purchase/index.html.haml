@@ -1,29 +1,28 @@
 = render "/header"
-.container
-  .container__logo
-  .container__check-buy-item
-    .container__check-buy-item__header
+.purchase
+  .purchase
+    .purchase__header
       購入内容の確認
-    .container__check-buy-item__buy-item-box
-      .container__check-buy-item__buy-item-box__image
+    .purchase__buy-item-box
+      .purchase__buy-item-box__image
         %img{src: "https://cdn.pixabay.com/photo/2014/05/04/13/50/gentoo-penguins-337589_1280.jpg"}/
-      .container__check-buy-item__buy-item-box__detail
-        .container__check-buy-item__buy-item-box__detail__item-name
+      .purchase__buy-item-box__detail
+        .purchase__buy-item-box__detail__item-name
           = @item.name
-        .container__check-buy-item__buy-item-box__detail__price-box
-          .container__check-buy-item__buy-item-box__detail__price-box__total-price
+        .purchase__buy-item-box__detail__price-box
+          .purchase__buy-item-box__detail__price-box__total-price
             ¥
             = @item.price
-          .container__check-buy-item__buy-item-box__detail__price-box__tax
+          .purchase__buy-item-box__detail__price-box__tax
             （税込）送料込み
-    %ul.container__check-buy-item__buy-price-table
-      %li.container__check-buy-item__buy-price-table__row
-        .container__check-buy-item__buy-price-table__row__price
+    %ul.purchase__buy-price-table
+      %li.purchase__buy-price-table__row
+        .purchase__buy-price-table__row__price
           支払い金額
-        .container__check-buy-itembuy-price-table__row__price-total
+        .purchasebuy-price-table__row__price-total
           ¥
           = @item.price
-    .container__check-buy-item__btn
+    .purchase__btn
       = form_tag(action: :pay, method: :post) do
         %button 購入する
 .footer
