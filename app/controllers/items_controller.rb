@@ -3,20 +3,17 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item_images = @item.item_images.build
-    @category_parent_array = ["---"]
-    #データベースから、親カテゴリーのみ抽出し、配列化
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end 
+    
+    
   end
-
-  # 以下全て、formatはjsonのみ
-  # 親カテゴリーが選択された後に動くアクション
+    
+    # 以下全て、formatはjsonのみ
+    # 親カテゴリーが選択された後に動くアクション
   def get_category_children
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
-    @category_children = Category.find_by(name: params[:parent_name], ancestry: nil).children
+    @category_children = Category.find_by(id: params[:parent_name], ancestry: nil).children
   end
-
+  
   # 子カテゴリーが選択された後に動くアクション
   def get_category_grandchildren
     #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
@@ -25,7 +22,7 @@ class ItemsController < ApplicationController
   
   def create
     @item = Item.new(item_params)
-    if @item.save
+    if @item.save!
       redirect_to root_path
     else
       render :new
@@ -55,10 +52,8 @@ class ItemsController < ApplicationController
     end
   end
 
-  private
-
   def item_params
-    params.require(:item).permit(:name,:text,:category_id,:quality,:delivery_charge,:area,:delivery_date,:price,item_images_attributes: [:image])#.merge(user_id: current_user.id)
+    params.require(:item).permit(:name,:text,:category_id,:child_category_id,:grandchild_category_id,:quality,:delivery_charge,:area_id,:delivery_date,:price,item_images_attributes: [:image])#.merge(user_id: current_user.id)
   end
 
   def item_params_update
@@ -69,6 +64,4 @@ class ItemsController < ApplicationController
     item = Item.find(params[:id])
     item.destroy
     redirect_to root_path, notice: "投稿内容を削除しました"
-  end
-
 end
