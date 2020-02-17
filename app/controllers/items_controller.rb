@@ -39,62 +39,29 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(2)
-    # paramsに変更する
-    # url:/items/:id/edit
-
-    # カテゴリー
-    # @category = @product.category
-    # @child_categories = Category.where('ancestry = ?', "#{@category.parent.ancestry}")
-    # @grand_child = Category.where('ancestry = ?', "#{@category.ancestry}")
-
-    # 画像の上限から登録されている画像の差だけ表示させる
-    # image_amount = 10
-    # image_amount.freeze
-    # num = image_amount - (@item_images.image.length)
-    # num.times { @item.images.build }
+    # 仮置（データが表示されるか確認するため）
+    @item = Item.find(1)
   end
 
   def update
+    # 出品者以外は投稿できないようにする
     if @item.user_id == current_user.id
-       @item.update(item_params)
-       redirect_to item_path(@item)
+      @item.update(item_params)
+      # 編集が終わると出品ページに戻る
+      redirect_to root_path,notice: '商品を編集しました'
     else
-      render :edit
+      # 編集画面に戻る
+      redirect_to edit_item_path
     end
   end
-
-  # def edit
-
-  #   # カテゴリーはよくわからん
-  #   @category = @product.category
-  #   @child_categories = Category.where('ancestry = ?', "#{@category.parent.ancestry}")
-  #   @grand_child = Category.where('ancestry = ?', "#{@category.ancestry}")
-
-  #   # 画像の上限から登録されている画像の差だけ表示させる
-  #   image_amount = 5
-  #   image_amount.freeze
-  #   num = image_amount - (@product.images.length)
-  #   num.times { @product.images.build }
-
-  # end
-
-  # def update
-  #   if @product.update_attributes(update_params) && params.require(:product).keys[0] == "images_attributes"
-  #     redirect_to root_path ,notice: '商品を編集しました'
-  #   else
-  #     redirect_to edit_product_path
-  #   end
-  # end
-
-
-
-
-
 
   private
 
   def item_params
+    params.require(:item).permit(:name,:text,:category_id,:quality,:delivery_charge,:area,:delivery_date,:price,item_images_attributes: [:image])#.merge(user_id: current_user.id)
+  end
+
+  def item_params_update
     params.require(:item).permit(:name,:text,:category_id,:quality,:delivery_charge,:area,:delivery_date,:price,item_images_attributes: [:image])#.merge(user_id: current_user.id)
   end
 
@@ -103,6 +70,5 @@ class ItemsController < ApplicationController
     item.destroy
     redirect_to root_path, notice: "投稿内容を削除しました"
   end
-
 
 end

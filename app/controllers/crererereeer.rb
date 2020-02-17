@@ -26,27 +26,38 @@ class ProductsController < ApplicationController
     @seller = User.find(@product.seller_id)
   end
 
+  # def edit
+  #   @category = @product.category
+
+  #   @child_categories = Category.where('ancestry = ?', "#{@category.parent.ancestry}")
+  #   @grand_child = Category.where('ancestry = ?', "#{@category.ancestry}")
+
+  #   image_amount = 5
+  #   image_amount.freeze
+  #   num = image_amount - (@product.images.length)
+  #   num.times { @product.images.build }
+  # end
+
+  # def update
+  #   if @product.update_attributes(update_params) && params.require(:product).keys[0] == "images_attributes"
+  #     redirect_to root_path ,notice: '商品を編集しました'
+  #   else
+  #     redirect_to edit_product_path
+  #   end
+  # end
+
   def edit
-
-
-    @category = @product.category
-
-    @child_categories = Category.where('ancestry = ?', "#{@category.parent.ancestry}")
-    @grand_child = Category.where('ancestry = ?', "#{@category.ancestry}")
-
-    image_amount = 5
-    image_amount.freeze
-    num = image_amount - (@product.images.length)
-    num.times { @product.images.build }
+    @images = @item.images
   end
-
+  
   def update
-    if @product.update_attributes(update_params) && params.require(:product).keys[0] == "images_attributes"
-      redirect_to root_path ,notice: '商品を編集しました'
+    if @item.update(item_params_update)
+      redirect_to user_path(current_user.id)
     else
-      redirect_to edit_product_path
+      render :edit
     end
   end
+  
   
   def destroy
     if @product.seller_id == current_user.id

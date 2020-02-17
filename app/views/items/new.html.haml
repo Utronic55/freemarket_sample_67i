@@ -6,7 +6,7 @@
       .item__content
         %h2
           商品の情報を入力
-        = form_with model: @item, url: items_path, local: true, class: "item__data" do |f|
+        = form_with model: @item, url: item_path, local: true, class: "item__data" do |f|
           // 画像アップロード
           .sell_form__main__box
             .sell_upload_box 

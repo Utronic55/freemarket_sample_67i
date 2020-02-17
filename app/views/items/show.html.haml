@@ -57,7 +57,7 @@
     - if @item.id == @user.id
       .l-single-container
         .listing-item-change-box
-          = link_to "商品の編集", class:'btn-default btn-red'
+          = link_to "商品の編集", edit_item_path, class:'btn-default btn-red'
           %p.text-center
             or
           =link_to "削除", item_path(@item.id), method: :delete, class:'btn-default btn-gray'
