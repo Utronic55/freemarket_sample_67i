@@ -4,24 +4,53 @@
   .pickup_container__title
     新規投稿商品
   .pickup_container__lists
-    - @items.each do |item|
-      - if item.buyer_id.blank?
-        = link_to item_path(item.id), method: :get do
-          .pickup_container__lists__list
-            .pickup_container__lists__list__img
-              = image_tag("#{item.item_images.first.image}", class: 'image-fot')
-            .pickup_container__lists__list__body
-              .pickup_container__lists__list__body__name
-                = item.name
-                %ul
-                  %li
-                    = ('¥' + item.price.to_s(:delimited))
-                  %li
-                    #text
-                      0
-      - else
-        現在商品はありません。
-
+    = render partial: 'share/item'
 
 .pickup_container
-  = render 'share/pickup_brand'
+  .pickup_container__head
+    ピックアップブランド
+  .pickup_container__title
+    新規投稿商品
+  .pickup_container__lists
+    .pickup_container__lists__list
+      .pickup_container__lists__list__img
+        = image_tag 'pict/fish.png',size: ("220x184")
+      .pickup_container__lists__list__body
+        .pickup_container__lists__list__body__name
+          item3
+        %ul
+          %li
+            30000円
+          %li
+            #text
+              0
+        %p
+          (税込)
+    .pickup_container__lists__list
+      .pickup_container__lists__list__img
+        = image_tag 'pict/chicken.png',size: ("220x184")
+      .pickup_container__lists__list__body
+        .pickup_container__lists__list__body__name
+          item2
+        %ul
+          %li
+            20000円
+          %li
+            #text
+              0
+        %p
+          (税込)
+    .pickup_container__lists__list
+      .pickup_container__lists__list__img
+        = image_tag 'pict/curry.png',size: ("220x184")
+      .pickup_container__lists__list__body
+        .pickup_container__lists__list__body__name
+          item1
+        %ul
+          %li
+            10000円
+          %li
+            #text
+              0
+        %p
+          (税込)
