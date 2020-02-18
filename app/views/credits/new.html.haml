@@ -5,60 +5,31 @@
     .register-card__header
       クレジットカード情報入力
     .register-card__form
-      = form_tag('/credits', id: 'charge-form',  name: "inputForm", class: "chapter__container__inner") 
+    = form_with url: confirmation_credit_path(current_user), method: :post, html: { name: "inputForm" } do |f|
       .register-card__form__group
         .register-card__form__group__title
           %span.label カード番号
           %span.necessary 必須
         .register-card__form__group__input-num
-          = text_field_tag "number", "", class: "number input__deafult", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
+          = f.text_field :card_number, type: 'text', class: 'input-number', placeholder: '半角数字のみ', maxlength: "16"
           = render "share/card-company"
         .register-card__form__group__title
           %span.label 有効期限
           %span.necessary 必須
         .register-card__form__group__expire
           .register-card__form__group__expire__select
-            %select.select__default#exp_month{name: "exp_month", type: "text"}
-              %option{value: ""} --
-              %option{value: "1"}01
-              %option{value: "2"}02
-              %option{value: "3"}03
-              %option{value: "4"}04
-              %option{value: "5"}05
-              %option{value: "6"}06
-              %option{value: "7"}07
-              %option{value: "8"}08
-              %option{value: "9"}09
-              %option{value: "10"}10
-              %option{value: "11"}11
-              %option{value: "12"}12
-            %i
-              = icon('fas', 'chevron-down')
-            %span 月
+          = f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{} , class: 'input-expire'
+          %span.expire-text 月
           .register-card__form__group__expire__select
-            %select.select__default#exp_year{name: "exp_year", type: "text"}
-              %option{value: ""} --
-              %option{value: "2019"}19
-              %option{value: "2020"}20
-              %option{value: "2021"}21
-              %option{value: "2022"}22
-              %option{value: "2023"}23
-              %option{value: "2024"}24
-              %option{value: "2025"}25
-              %option{value: "2026"}26
-              %option{value: "2027"}27
-              %option{value: "2028"}28
-              %option{value: "2029"}29
-            %i
-              = icon('fas', 'chevron-down')
-            %span  年
+          = f.select :exp_year, [["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029]],{} , class: 'input-expire'
+          %span.expire-text 年
         .register-card__form__group__title
           %span.label セキュリティーコード
           %span.necessary 必須
         .register-card__form__group__code
-          = text_field_tag "cvc", "", class: "cvc", placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4", id: "cvc"
+          = f.text_field :cvc, type: 'text', class: 'input-number', placeholder: 'カード背面4桁もしくは3桁の番号', maxlength: "4"
         .register-card__form__group__what-code
           = icon('fa','question-circle',class: 'fas')
           = link_to "カード裏面の番号とは？", class: "btn" 
         #card_token
-          = submit_tag "追加する", id: "token_submit", class: "top__margin"
+          = f.submit '追加する', class: 'content-bottom--add-btn', id: 'token_submit'

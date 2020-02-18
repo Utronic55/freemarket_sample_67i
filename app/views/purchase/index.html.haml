@@ -5,7 +5,7 @@
       購入内容の確認
     .purchase__buy-item-box
       .purchase__buy-item-box__image
-        %img{src: "https://cdn.pixabay.com/photo/2014/05/04/13/50/gentoo-penguins-337589_1280.jpg"}/
+        = @item.image
       .purchase__buy-item-box__detail
         .purchase__buy-item-box__detail__item-name
           = @item.name
@@ -23,7 +23,7 @@
           ¥
           = @item.price
     .purchase__btn
-      = form_tag(action: :pay, method: :post) do
+      = form_tag(action: :pay, method: :post,class: "btn") do
         %button 購入する
 .footer
   = render './footer'
