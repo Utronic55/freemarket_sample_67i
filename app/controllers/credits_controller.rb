@@ -36,7 +36,7 @@ class CreditsController < ApplicationController
     end
   end
 
-  def delete #PayjpとCardデータベースを削除します
+  def delete 
     card = Card.where(user_id: current_user.id).first
     if card.blank?
     else

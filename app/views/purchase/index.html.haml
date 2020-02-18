@@ -1,4 +1,4 @@
-= render "/header"
+= render "share/header"
 .purchase
   .purchase
     .purchase__header
@@ -26,6 +26,6 @@
       = form_tag(action: :pay, method: :post,class: "btn") do
         %button 購入する
 .footer
-  = render './footer'
+  = render 'share/footer'
 .purchase_btn
-  = render './purchase_btn'
+  = render 'share/purchase_btn'

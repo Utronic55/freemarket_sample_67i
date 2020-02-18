@@ -1,4 +1,4 @@
-= render "/header"
+= render "share/header"
 .wrapper
   = render "share/side_bar"
   .content
@@ -6,6 +6,6 @@
       = link_to destroy_user_session_path do
         = "ログアウト"
 .footer
-  = render './footer'
+  = render 'share/footer'
 .purchase_btn
-  = render './purchase_btn'
+  = render 'share/purchase_btn'

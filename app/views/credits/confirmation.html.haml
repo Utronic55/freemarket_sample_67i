@@ -1,4 +1,4 @@
-= render "/header"
+= render "share/header"
 .wrapper
   = render "share/side_bar"
   .content-credit
@@ -14,6 +14,6 @@
     .content-credit__howto-pay
       = link_to "支払い方法について"
 .footer
-  = render './footer'
+  = render 'share/footer'
 .purchase_btn
-  = render './purchase_btn'
+  = render 'share/purchase_btn'

@@ -1,4 +1,4 @@
-= render "/header"
+= render "share/header"
 .wrapper
   = render "share/side_bar"
   .select-pay
@@ -21,6 +21,6 @@
           %input{ type: "hidden", name: "card_id", value: "" }
           %button 削除する
 .footer
-  = render './footer'
+  = render 'share/footer'
 .purchase_btn
-  = render './purchase_btn'
+  = render 'share/purchase_btn'
