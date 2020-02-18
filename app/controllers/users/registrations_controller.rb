@@ -31,7 +31,6 @@ def create_address
   @user.build_address(@address.attributes)
   @user.save!
   sign_in(:user, @user)
-  redirect_to root_path
 end
 
 protected
