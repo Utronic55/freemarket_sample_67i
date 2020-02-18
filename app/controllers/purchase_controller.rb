@@ -1,10 +1,9 @@
 class PurchaseController < ApplicationController
 
   require 'payjp'
-  before_action :set_card, only: [:pay]
+  before_action :set_card, only: [:index, :pay]
 
   def index
-    card = Card.where(user_id: current_user.id).first
     if card.blank?
       redirect_to controller: "credits", action: "new"
     else
