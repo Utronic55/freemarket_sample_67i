@@ -1,7 +1,6 @@
 class CreditsController < ApplicationController
 
-  before_action :get_payjp_info, only: [:new_create, :create, :destroy, :show]
-  before_action :set_card, only: [:destroy]
+  before_action :get_payjp_info, only: [:new_create, :create, :delete, :show]
   
   def new
   end
@@ -27,6 +26,7 @@ class CreditsController < ApplicationController
   end
 
   def show 
+    card = Card.where(user_id: current_user.id).first
     if card.blank?
       redirect_to action: "confirmation" 
     else
@@ -34,11 +34,13 @@ class CreditsController < ApplicationController
       customer = Payjp::Customer.retrieve(card.customer_id)
       @default_card_information = customer.cards.retrieve(card.card_id)
     end
-  end 
-  
+  end
+
   def delete 
-    if card.present?
+    card = Card.where(user_id: current_user.id).first
+    if card.blank?
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
       customer.delete
       card.delete
     end
@@ -53,9 +55,5 @@ class CreditsController < ApplicationController
     else
       Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
     end
-  end
-
-  def set_credit
-    card = Card.where(user_id: current_user.id).first
   end
 end
