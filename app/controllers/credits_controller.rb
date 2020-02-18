@@ -25,7 +25,7 @@ class CreditsController < ApplicationController
   def confirmation
   end
 
-  def show #Cardのデータpayjpに送り情報を取り出します
+  def show 
     card = Card.where(user_id: current_user.id).first
     if card.blank?
       redirect_to action: "confirmation" 
@@ -36,7 +36,7 @@ class CreditsController < ApplicationController
     end
   end
 
-  def delete #PayjpとCardデータベースを削除します
+  def delete 
     card = Card.where(user_id: current_user.id).first
     if card.blank?
     else
@@ -48,8 +48,6 @@ class CreditsController < ApplicationController
       redirect_to action: "new"
   end
 
-
-  
 
   private
   def get_payjp_info
