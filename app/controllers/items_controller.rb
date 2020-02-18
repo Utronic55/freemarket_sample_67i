@@ -34,20 +34,35 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @user = User.find(params[:id])
+    @images = ItemImage.find(params[:id])
+
+    
   end
 
-  
-end
+  def edit
+  end
 
-private
+  def update
+  end
 
-def item_params
-  params.require(:item).permit(:name,:text,:category_id,:child_category_id,:grandchild_category_id,:quality,:delivery_charge,:area_id,:delivery_date,:price,item_images_attributes: [:image]).merge(saler_id: current_user.id)
-end
-
-def destroy
+  def destroy
     item = Item.find(params[:id])
     item.destroy
     redirect_to root_path, notice: "投稿内容を削除しました"
-end
 
+  end
+  
+
+
+  private
+
+  def item_params
+    params.require(:item).permit(:name,:text,:category_id,:child_category_id,:grandchild_category_id,:quality,:delivery_charge,:area_id,:delivery_date,:price,item_images_attributes: [:image]).merge(saler_id: current_user.id)
+  end
+  
+  # def
+  #    params.require(:item).permit(:name,:text,:category_id,:child_category_id,:grandchild_category_id,:quality,:deliv)
+  # end
+
+end

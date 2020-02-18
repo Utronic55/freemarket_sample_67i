@@ -1,28 +1,27 @@
 .detail
   .detail_header
     .detail_header_top
-      = render 'share/header'
-    .detail_header_main FURIMA>ベビー・キッズ>ベビー服(男女兼用)> ~95cmアウター >product3
+      = render './header'
   .detail_content
     .detail_content_main_box
       .detail_content_main_box-name
         = @item.name
-    - @item.item_images.each do |image|
       .detail_content_main_box-image
         .main__image
-          = link_to image_tag("https://www.homepage-tukurikata.com/image/lion.jpg", class:"link-icon.abtn"),"#"
-          %image_tag{:alt => "ライオンの画像", :border => "0", :height =>"100", :src=>"https://www.homepage-tukurikata.com/image/lion.jpg", :width => "150"}/
-        .detail_content_main_box-subimage1
-          = link_to image_tag("https://www.homepage-tukurikata.com/image/lion.jpg", class:"link-icon"),"#"
-          = link_to image_tag("https://www.homepage-tukurikata.com/image/lion.jpg", class:"link-icon.gbtn"),"#"
-      %br
+          %ul
+            %li
+              = image_tag @images.image.url, class:"main-image",size: "400x300"
+              %ul
+                - @item.item_images.each do |image|
+                  %li
+                    = image_tag image.image_url,class:"image-list",size: "250x150"
       .detail_content_main_box-price
         .detail_content_main_price
           ￥
           = @item.price
         .detail_content_main_tax (税込)送料込み
       %br
-      .detail_content_main_name 商品名
+      %br
     .detail_table
       .detail_table--group
         %table
@@ -31,38 +30,30 @@
               %td 出品者
               %td
                 = @user.nickname
-          - if @item.size.present?
-            %tr
-              %td 商品のサイズ
-              %td
-                = @item.size
             %tr
               %td 商品の状態
               %td
-                = @item.delivery_method
+                =@item.quality
             %tr
               %td 配送料の負担
-              %td 送料別（購入者負担）
+              %td 
+                =@item.delivery_charge
             %tr
               %td 配送元の地域
               %td
-                = @item.area
+                = @item.area.name
+                
             %tr
               %td 発送日の目安
               %td
                 = @item.delivery_date
-    .detail_content_link
-      %p < 前の商品
-      %p > 次の商品
-
-    - if @item.id == @user.id
       .l-single-container
         .listing-item-change-box
-          = link_to "商品の編集", class:'btn-default btn-red'
-          %p.text-center
-            or
-          =link_to "削除", item_path(@item.id), method: :delete, class:'btn-default btn-gray'
-          - if @item.id != @user.id
-            =link_to "購入", new_item_path(@item.id),class:'btn-default btn-gray'
+          - if user_signed_in? && @item.saler_id == current_user.id
+            = link_to "商品の編集", edit_item_path(@item.id), class:'btn-default btn-red'
+            %p.text-center
+            =link_to "削除", item_path(@item.id), method: :delete, class:'btn-default btn-gray'
+          - else
+            =link_to "購入", "#",class:'btn-default btn-gray'
   .detail_footer
     = render 'share/footer'
