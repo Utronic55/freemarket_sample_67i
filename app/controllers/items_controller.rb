@@ -36,14 +36,19 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @user = User.find(params[:id])
     @images = ItemImage.find(params[:id])
-
-    
   end
 
   def edit
+    @item = Item.find(params[:id])
+    @item_images =Item.find(params[:id])
   end
 
   def update
+    @item = Item.find(params[:id])
+    if @item.saler_id == current_user.id
+      @item.update(update_params)
+      redirect_to root_path
+    end
   end
 
   def destroy
@@ -60,9 +65,10 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name,:text,:category_id,:child_category_id,:grandchild_category_id,:quality,:delivery_charge,:area_id,:delivery_date,:price,item_images_attributes: [:image]).merge(saler_id: current_user.id)
   end
-  
-  # def
-  #    params.require(:item).permit(:name,:text,:category_id,:child_category_id,:grandchild_category_id,:quality,:deliv)
-  # end
 
+  def update_params
+    params.require(:item).permit(:name,:text,:category_id,:child_category_id,:grandchild_category_id,:quality,:delivery_charge,:area_id,:delivery_date,:saler_id,:price,item_images_attributes: [:image])
+  end
+
+  
 end
