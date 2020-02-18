@@ -16,7 +16,7 @@
     }
   .detail_content{
     background-color:white;
-    height:1200px;
+    height:1100px;
     margin:50px 350px;
   }
     .detail_content_main_box{
@@ -24,16 +24,19 @@
     }
       .detail_content_main_box-name{
         text-align: center;
-        font-size:20px;
+        font-size:40px;
         font-family: Arial, Helvetica, sans-serif;
     }
       .detail_content_main_box-image{
         text-align: center;
       }
-      .detail_content_main_box-subimage1{
-        margin-left:180px;
-        display: flex;
+
+      ul{
+        display:flex;
+        position:relative;
+        margin-left:50px;
       }
+       
       // .detail_content_main_box-price{
       // }
         .detail_content_main_price{
