@@ -1,7 +1,7 @@
 class PurchaseController < ApplicationController
 
   require 'payjp'
-  before_action :set_credit, only: [:pay]
+  before_action :set_card, only: [:pay]
 
   def index
     card = Card.where(user_id: current_user.id).first

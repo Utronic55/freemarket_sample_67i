@@ -1,7 +1,7 @@
 class CreditsController < ApplicationController
 
   before_action :get_payjp_info, only: [:new_create, :create, :destroy, :show]
-  before_action :set_credit, only: [:destroy]
+  before_action :set_card, only: [:destroy]
   
   def new
   end
