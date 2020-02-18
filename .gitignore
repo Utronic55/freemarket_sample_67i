@@ -36,3 +36,4 @@ config/secrets.yml
 /config/master.key
 public/uploads/
 
+/.env
