@@ -20,7 +20,6 @@ $(function(){
       fileReader.readAsDataURL(file);
       //画像が10枚になったら超えたらドロップボックスを削除する
       if (num == 10){
-        console.log("okokokok")
         $('#image-box__container').css('display', 'none')   
       }
       //読み込みが完了すると、srcにfileのURLを格納

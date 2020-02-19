@@ -1,0 +1,157 @@
+.container
+  = render partial: 'devise/shared/form_header'
+  -# // 商品情報編集
+  .main
+    .item
+      .item__content
+        %h2
+          商品の情報を編集
+        = form_with model: @item, url: item_path(@item),method: :patch, local: true, class: "item__data" do |f|
+          // 画像アップロード
+          .sell_form__main__box
+            .sell_upload_box 
+              
+              %h3.sell_upload_box__head
+                = f.label :image, "出品画像"
+                %span 必須
+              %p.info 最大10枚までアップロードできます
+              .sell_dropbox
+                ドラッグアンドドロップ
+                %br
+                またはクリックしてファイルをアップロード
+                .image-box__container
+                  #image-box-1
+                  .item-num-0
+                  = f.fields_for :item_images, @item.item_images.first do |image|
+                    .item__img__dropzone.clearfix
+                      #preview
+                      -# １〜５枚目プレビュー表示
+                      .item__img__dropzone__input
+                        = image.label :image, for: "upload-image" do
+                          .input-area
+                            = image.file_field :image_url, id: "upload-image", class: "upload-image", 'data-image': 0
+
+                          .item__img__dropzone__input__description
+                            .item__img__dropzone__input__description__text
+                              ドラッグアンドドロップ
+                              %br
+                              またはクリックしてファイルをアップロード
+
+                    .item__img__dropzone2.clearfix
+                      #preview2
+                      -# ６〜１０枚目プレビュー表示
+                      .item__img__dropzone2__input2
+                        = image.label :image, for: "upload-image" do
+                          .input-area
+                            = image.file_field :image_url, id: "upload-image", class: "upload-image", 'data-image': 0
+                          .item__img__dropzone2__input2__description
+                            .item__img__dropzone2__input2__description__text
+                              ドラッグアンドドロップ
+                              %br
+                              またはクリックしてファイルをアップロード
+                      
+          -# // 商品情報入力(商品名)
+          .item__data--box
+            .item__data--box--first
+              = f.label :name do
+                商品名
+                %span 必須
+              %div
+                = f.text_field :name, placeholder: "商品名 (必須 40文字まで)", class: "input-default"
+            .item__data--box--group
+              = f.label :text do
+                商品の説明
+                %span 必須
+              = f.text_area :text, placeholder: "商品の説明 (必須1000文字以内) (色、素材、重さ、定価、注意点など) 例)2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5", class: "textarea-default"
+          -# // 商品情報入力(商品詳細)
+          .item__data--box
+            %H3.item__data--box--information
+              商品の詳細
+            .sell__form--box
+              .item__data--box--first
+                = f.label :category_id do
+                  カテゴリー
+                  %span.form-require
+                    必須
+                  .select-wrap#category
+                    .select-default
+                    -# = f.select :category_id, options_from_collection_for_select(@category_parent_array, :id, :name), {prompt: "---"}, class: "select-default", id: "category"
+                    = f.select :category_id, options_for_select(Category.where(ancestry: nil).map{|c|[c.name, c.id]}, ['---']), {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'} 
+                    %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down
+                .item__data--box--group
+                  = f.label :quality do
+                    商品の状態
+                    %span 必須
+                  .item__data--box--group__form
+                  = f.select :quality, ['---','新品、未使用','未使用に近い','目立った傷や汚れなし','傷や汚れあり','全体的に状態が悪い'],class: "select-default"
+
+              -# // 商品情報入力(商品詳細)
+          .item__data--box
+            %H3.item__data--box--information
+              配送について
+            .sell__form--box
+              .item__data--box--first
+                = f.label :delivery_charge do
+                  配送料の負担
+                %span
+                  必須
+                .select-wrap
+                = f.select :delivery_charge, ['---','送料込み','着払い'],class: "select-default"
+
+              .item__data--box--group
+                = f.label :area do
+                  発送元の地域
+                %span
+                  必須
+                .select-wrap
+                = f.collection_select :area_id, Area.all, :id, :name
+              .sell__form--box
+                .item__data--box--group
+                  = f.label :delivery_date do
+                    発送までの日数
+                  %span
+                    必須
+                  .select-wrap
+                  = f.select :delivery_date, ['---','1~2日で発送','2~3日で発送','4~7日で発送'],class: "select-default"
+                     
+          -# // 商品情報入力(販売価格)
+          .item__data--box
+            %H3.item__data--box--information
+              販売価格(300〜9,999,999)
+            .sell__form--box
+              .sell__form--box--price
+                %ul.l-left
+                  %li.item__data--box--first
+                    = label :price, "価格", {class: 'form-label'}
+                    %span 必須
+                .input-price
+                  .l-left
+                    ¥
+                  .l-right
+                    .input-price__input_box
+                      = f.text_field :price, placeholder: "例)300", class: "input-price-area"
+              .sell__form--box--commision
+                .l-left
+                  販売手数料 (10%)
+                .l-right
+                  −
+              .sell__form--box--profits
+                .l-left
+                  販売利益
+                .l-center
+                  −
+                .l-right
+                  -
+
+          .item__data--box
+            %p
+              禁止されている出品、行為を必ずご確認ください。</br>
+              またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。
+            %button.item__data--box--btn{type: "submit"}
+              .name
+                編集する
+            .item__data--box--formbtn
+              = link_to "もどる", "/", class: "btn "
+
+  = render partial: "devise/shared/form_footer"
+
