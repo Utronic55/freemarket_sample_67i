@@ -25,7 +25,7 @@ class CreditsController < ApplicationController
   def confirmation
   end
 
-  def show 
+  def show
     card = Card.where(user_id: current_user.id).first
     if card.blank?
       redirect_to action: "confirmation"
