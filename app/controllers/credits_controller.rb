@@ -1,7 +1,5 @@
 class CreditsController < ApplicationController
 
-  before_action :get_payjp_info, only: [:create, :delete, :show]
-
   def new
   end
 
@@ -9,6 +7,7 @@ class CreditsController < ApplicationController
     if params['payjp-token'].blank?
       redirect_to action: "new"
     else
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.create(
       card: params['payjp-token'],
       metadata: {user_id: current_user.id}
@@ -25,7 +24,7 @@ class CreditsController < ApplicationController
   def confirmation
   end
 
-  def show 
+  def show
     card = Card.where(user_id: current_user.id).first
     if card.blank?
       redirect_to action: "confirmation"
@@ -48,12 +47,5 @@ class CreditsController < ApplicationController
       redirect_to action: "new"
   end
 
-  private
-  def get_payjp_info
-    if Rails.env == 'development'
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-    else
-      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
-    end
-  end
+
 end

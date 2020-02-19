@@ -1,8 +1,11 @@
 class ItemsController < ApplicationController
+
   before_action:set_item, only:[:show,:edit,:update]
+
   def index
     
   end
+
   def new
     @item = Item.new
     @item_images = @item.item_images.build
@@ -35,8 +38,8 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     @images = ItemImage.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   def edit
@@ -72,7 +75,7 @@ class ItemsController < ApplicationController
 
   end
 end
-  
+
 
 
   private
