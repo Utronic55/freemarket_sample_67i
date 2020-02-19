@@ -57,5 +57,5 @@ class CreditsController < ApplicationController
     else
       Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
     end
-
+  end
 end
