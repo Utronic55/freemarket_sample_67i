@@ -1,0 +1,19 @@
+= render "share/header"
+.wrapper
+  = render "share/side_bar"
+  .content-credit
+    .content-credit__pay
+      支払い方法
+    .content-credit__credit
+      .content-credit__credit__credit-list
+        クレジット一覧
+      .content-credit__credit__credit-add
+        = icon('fa','credit-card',class: 'far')
+        = link_to " /credits/new"  do
+          ="クレジットカードを追加する"
+    .content-credit__howto-pay
+      = link_to "支払い方法について"
+.footer
+  = render 'share/footer'
+.purchase_btn
+  = render 'share/purchase_btn'

@@ -1,11 +1,11 @@
 %nav.side-bar
   %ul.side-bar__list
     %li
-      = link_to "マイページ"
+      = link_to "/mypages" do
+        ="マイページ"
     %li
-      = link_to "お知らせ"
-    %li
-       = link_to "商品確認ページ"
+      = link_to "/" do
+        ="ホームに戻る"
     %li
       = link_to "出品する"
     %li
@@ -22,12 +22,14 @@
       = link_to "ニュース一覧"
     %li
       = link_to "評価一覧"
-    %li
-    = link_to "クレジットカードを追加する"
   クレジットカード
   %ul.side-bar__list
     %li
-    = link_to "クレジットカードを追加する"
+      = link_to "/credits/:id/confirmation" do
+        ="クレジットカードを追加する"
+    %li
+      = link_to "/credits/:id" do
+        ="クレジットカード情報"
   設定
   %ul.side-bar__list
     %li
@@ -41,4 +43,5 @@
     %li
       = link_to "電話番号の確認"
     %li
-      = link_to "ログアウト"
+      = link_to " /mypages/new" do
+        ="ログアウト"

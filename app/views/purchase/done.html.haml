@@ -1,0 +1,15 @@
+%main.single-main
+  .lsingle-container
+    .item_box
+      .item_box__item_title
+        購入が完了しました！
+    %hr
+    .lsingle-container_done
+      .lsingle-container_done__name
+        = @item.name
+      .lsingle-container_done__price
+        ¥
+        = @item.price
+    %hr
+    .lsingle-container_top-page
+      =link_to "ホームへ戻る", root_path
