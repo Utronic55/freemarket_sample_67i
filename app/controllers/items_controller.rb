@@ -36,8 +36,6 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @user = User.find(params[:id])
     @images = ItemImage.find(params[:id])
-
-    
   end
 
   def edit

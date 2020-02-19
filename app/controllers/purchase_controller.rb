@@ -1,8 +1,9 @@
 class PurchaseController < ApplicationController
 
   require 'payjp'
+  before_action :set_purchase
 
-  def index
+  def show
     card = Card.where(user_id: current_user.id).first
     if card.blank?
       redirect_to controller: "credits", action: "new"
@@ -10,12 +11,11 @@ class PurchaseController < ApplicationController
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
       @default_card_information = customer.cards.retrieve(card.card_id)
-      @item = Item.find(params[:id])
+      @images = ItemImage.find(params[:id])
     end
   end
 
   def pay
-    @item = Item.find(params[:id])
     card = Card.where(user_id: current_user.id).first
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     Payjp::Charge.create(
@@ -27,7 +27,6 @@ class PurchaseController < ApplicationController
   end
 
   private
-
   def item_params
     params.require(:item).permit(
       :name,
@@ -36,4 +35,7 @@ class PurchaseController < ApplicationController
     ).merge(user_id: current_user.id)
   end
 
+  def set_purchase
+    @item = Item.find(params[:id])
+  end
 end

@@ -1,7 +1,7 @@
 class CreditsController < ApplicationController
 
   before_action :get_payjp_info, only: [:new_create, :create, :delete, :show]
-  
+
   def new
   end
 
@@ -57,4 +57,6 @@ class CreditsController < ApplicationController
       Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
     end
   end
+
+
 end
