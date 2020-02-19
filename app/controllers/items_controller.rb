@@ -1,19 +1,25 @@
 class ItemsController < ApplicationController
 
+  before_action:set_item, only:[:show,:edit,:update]
+
   def index
+    
   end
 
   def new
     @item = Item.new
     @item_images = @item.item_images.build
+    
+    
   end
+    
     # 以下全て、formatはjsonのみ
     # 親カテゴリーが選択された後に動くアクション
   def get_category_children
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
     @category_children = Category.find_by(id: params[:parent_name], ancestry: nil).children
   end
-
+  
   # 子カテゴリーが選択された後に動くアクション
   def get_category_grandchildren
     #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
@@ -22,13 +28,13 @@ class ItemsController < ApplicationController
   
   def create
     @item = Item.new(item_params)
+
     if @item.save!
-      flash[:notice] = "出品が完了しました"
       redirect_to root_path
     else
-      flash[:alart] = "出品が失敗しました。必須項目を確認してください"
-      redirect_to new_path
+      render :new
     end
+
   end
 
   def show
@@ -37,20 +43,38 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
+    @item.item_images.build
+    @item_images = ItemImage.where(item_id: @item.id)
+    @grandchild = Category.find(@item.grandchild_category_id)
+    @child = Category.find(@item.child_category_id)
+    @parent = Category.find(@item.category_id)
+    #親カテゴリの配列
+    @parent_categories = Category.where(ancestry: nil).pluck(:name)
+    #子カテゴリの配列
+    @child_categories = Category.where('ancestry = ?', "#{@grandchild.parent.ancestry}")
+    #孫カテゴリの配列
+    @grand_child = Category.where('ancestry = ?', "#{@grandchild.ancestry}")
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def update
     @item = Item.find(params[:id])
+    if @item.saler_id == current_user.id
+      @item.update(update_params)
+      redirect_to root_path
+    end
   end
 
   def destroy
     item = Item.find(params[:id])
     item.destroy
-
     redirect_to root_path, notice: "投稿内容を削除しました"
 
   end
+end
 
 
 
@@ -60,13 +84,10 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name,:text,:category_id,:child_category_id,:grandchild_category_id,:quality,:delivery_charge,:area_id,:delivery_date,:price,item_images_attributes: [:image]).merge(saler_id: current_user.id)
   end
 
-  def registered_image_params
-    params.require(:registered_images_ids).permit({ids: []})
+  def update_params
+    params.require(:item).permit(:name,:text,:category_id,:child_category_id,:grandchild_category_id,:quality,:delivery_charge,:area_id,:delivery_date,:saler_id,:price,item_images_attributes: [:image])
   end
 
   def set_item
     @item = Item.find(params[:id])
   end
-
-
-end
