@@ -16,6 +16,25 @@ Rails.application.routes.draw do
     post 'addresses', to: 'users/registrations#create_address'
   end
 
+  resources :mypages, only: [:index, :new]   
+
+  resources :credits, only: [:new, :create, :show] do
+    collection do
+      post 'delete', to: 'credits#delete'
+      post 'show'
+    end
+    member do
+      get 'confirmation'
+    end
+    end 
+
+    resources :purchase, only: [:show] do
+      collection do
+        get 'index', to: 'purchase#index'
+        post 'pay/:id', to: 'purchase#pay'
+        get 'done/:id', to: 'purchase#done'
+      end
+    end
 
   root to: "top#index"
   resources :users, only: [:index,:new]

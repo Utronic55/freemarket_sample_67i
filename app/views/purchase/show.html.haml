@@ -1,0 +1,31 @@
+= render "share/header"
+.purchase
+  .purchase
+    .purchase__header
+      購入内容の確認
+    .purchase__buy-item-box
+      .purchase__buy-item-box__image
+        = image_tag @images.image_url
+      .purchase__buy-item-box__detail
+        .purchase__buy-item-box__detail__item-name
+          = @item.name
+        .purchase__buy-item-box__detail__price-box
+          .purchase__buy-item-box__detail__price-box__total-price
+            ¥
+            = @item.price
+          .purchase__buy-item-box__detail__price-box__tax
+            （税込）送料込み
+    %ul.purchase__buy-price-table
+      %li.purchase__buy-price-table__row
+        .purchase__buy-price-table__row__price
+          支払い金額
+        .purchasebuy-price-table__row__price-total
+          ¥
+          = @item.price
+    .purchase__btn
+      = form_tag(action: :pay, method: :post,class: "btn") do
+        %button 購入する
+.footer
+  = render 'share/footer'
+.purchase_btn
+  = render 'share/purchase_btn'

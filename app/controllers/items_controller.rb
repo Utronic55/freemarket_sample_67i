@@ -1,21 +1,17 @@
 class ItemsController < ApplicationController
   def index
-    
   end
   def new
     @item = Item.new
     @item_images = @item.item_images.build
-    
-    
   end
-    
     # 以下全て、formatはjsonのみ
     # 親カテゴリーが選択された後に動くアクション
   def get_category_children
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
     @category_children = Category.find_by(id: params[:parent_name], ancestry: nil).children
   end
-  
+
   # 子カテゴリーが選択された後に動くアクション
   def get_category_grandchildren
     #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
@@ -117,6 +113,7 @@ class ItemsController < ApplicationController
   def destroy
     item = Item.find(params[:id])
     item.destroy
+
     redirect_to root_path, notice: "投稿内容を削除しました"
 
   end

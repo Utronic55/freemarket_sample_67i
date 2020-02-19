@@ -1,6 +1,6 @@
 .side-bar{
-  position: absolute;
   font-weight: 600;
+  margin-right: 100px;
   .side-bar__list {
     width: 350px;
     margin-bottom: 30px;
@@ -8,6 +8,7 @@
     list-style-type: none;
     background-color: white;
     border: solid;
+    display: block;
   }
     li a {
       display: block;

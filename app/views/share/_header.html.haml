@@ -20,6 +20,8 @@
         -if user_signed_in?
           = link_to destroy_user_session_path do
             ="ログアウト"
+          = link_to mypages_path do
+            ="マイページ"
         -else
           = link_to new_user_session_path do
             ="ログイン"

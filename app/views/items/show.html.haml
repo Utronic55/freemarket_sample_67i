@@ -36,7 +36,7 @@
                 =@item.quality
             %tr
               %td 配送料の負担
-              %td 
+              %td
                 =@item.delivery_charge
             %tr
               %td 配送元の地域
@@ -54,6 +54,6 @@
             %p.text-center
             =link_to "削除", item_path(@item.id), method: :delete, class:'btn-default btn-gray'
           - else
-            =link_to "購入", "#",class:'btn-default btn-gray'
+            =link_to "購入", purchase_path(@item.id),class:'btn-default btn-gray'
   .detail_footer
     = render 'share/footer'

@@ -1,8 +1,8 @@
 .wrapper{
   margin: 40px 200px 4px 150px;
+  display: flex;
   .mypage{
     float: right;
-    height: 700px;
     width: 650px;
     &__user-box{
       text-align: center;

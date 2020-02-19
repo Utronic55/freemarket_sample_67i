@@ -1,17 +1,14 @@
+= render "share/header"
 .wrapper
   = render "share/side_bar"
   .mypage
     .mypage__user-box
       .mypage__user-box__icon
       .mypage__user-box__user-name
-        田中
+        = current_user.nickname
       .mypage__user-box__status
         .mypage__user-box__status__review
-          評価：
-          10
         .mypage__user-box__status__item
-          出品数：
-          5
     .mypage__info-box
       お知らせ
     .mypage__contents
@@ -20,3 +17,7 @@
       あなたの投稿にいいねしました！ 
     .mypage__contents
       あなたの投稿にいいねしました！
+.footer
+  = render 'share/footer'
+.purchase_btn
+  = render 'share/purchase_btn'

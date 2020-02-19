@@ -1,0 +1,11 @@
+= render "share/header"
+.wrapper
+  = render "share/side_bar"
+  .content
+    .content__logout  
+      = link_to destroy_user_session_path do
+        = "ログアウト"
+.footer
+  = render 'share/footer'
+.purchase_btn
+  = render 'share/purchase_btn'
