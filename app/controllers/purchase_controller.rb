@@ -23,17 +23,14 @@ class PurchaseController < ApplicationController
     customer: card.customer_id, 
     currency: 'jpy', 
   )
-  redirect_to root_path 
+  redirect_to action:'done'
+  end
+
+  def done
+    @item.update(buyer_id: current_user.id)
   end
 
   private
-  def item_params
-    params.require(:item).permit(
-      :name,
-      :text,
-      :price,
-    ).merge(user_id: current_user.id)
-  end
 
   def set_purchase
     @item = Item.find(params[:id])

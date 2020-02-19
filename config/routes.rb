@@ -32,7 +32,7 @@ Rails.application.routes.draw do
       collection do
         get 'index', to: 'purchase#index'
         post 'pay/:id', to: 'purchase#pay'
-        get 'done', to: 'purchase#done'
+        get 'done/:id', to: 'purchase#done'
       end
     end
 
