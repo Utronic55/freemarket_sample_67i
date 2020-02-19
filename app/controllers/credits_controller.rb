@@ -28,7 +28,7 @@ class CreditsController < ApplicationController
   def show 
     card = Card.where(user_id: current_user.id).first
     if card.blank?
-      redirect_to action: "confirmation" 
+      redirect_to action: "confirmation"
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
@@ -36,7 +36,7 @@ class CreditsController < ApplicationController
     end
   end
 
-  def delete 
+  def delete
     card = Card.where(user_id: current_user.id).first
     if card.blank?
     else
@@ -56,5 +56,4 @@ class CreditsController < ApplicationController
       Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
     end
   end
-
 end

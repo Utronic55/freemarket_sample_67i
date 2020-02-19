@@ -3,7 +3,7 @@
     = link_to item_path(item.id), method: :get do
       .pickup_container__lists__list
         .pickup_container__lists__list__img
-          = image_tag("#{item.item_images.first.image}", class: 'image-fot')
+          = image_tag("#{item.item_images.first.image}", class: 'image-fot',size:'100x100')
         .pickup_container__lists__list__body
           .pickup_container__lists__list__body__name
             = item.name
