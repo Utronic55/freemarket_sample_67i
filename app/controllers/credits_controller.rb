@@ -1,13 +1,11 @@
 class CreditsController < ApplicationController
 
   before_action :get_payjp_info, only: [:create, :delete, :show]
-  require "payjp"
 
   def new
   end
 
   def create
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     if params['payjp-token'].blank?
       redirect_to action: "new"
     else
