@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action:set_item only:[:show,:edit,:update]
+
   def index
   end
   def new
@@ -30,13 +32,11 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     @images = ItemImage.find(params[:id])
   end
 
   def edit
 
-    @item = Item.find(params[:id])
     gon.item = @item
     gon.item_images = @item.item_images
 
@@ -64,7 +64,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
     if @item.saler_id == current_user.id
       @item.update(item_params)
       flash[:notice] = "編集が完了しました"
@@ -128,4 +127,8 @@ end
 
   def registered_image_params
     params.require(:registered_images_ids).permit({ids: []})
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
