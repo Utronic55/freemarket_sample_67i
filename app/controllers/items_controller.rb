@@ -129,10 +129,6 @@ end
     params.require(:item).permit(:name,:text,:category_id,:child_category_id,:grandchild_category_id,:quality,:delivery_charge,:area_id,:delivery_date,:price,item_images_attributes: [:image]).merge(saler_id: current_user.id)
   end
 
-  # def update_params
-  #   params.require(:item).permit(:name,:text,:category_id,:child_category_id,:grandchild_category_id,:quality,:delivery_charge,:area_id,:delivery_date,:saler_id,:price,item_images_attributes: [:image])
-  # end
-
   def registered_image_params
     params.require(:registered_images_ids).permit({ids: []})
   end
