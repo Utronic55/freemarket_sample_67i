@@ -1,6 +1,6 @@
 .container
   = render partial: 'devise/shared/form_header'
-  -# // 商品情報　編集
+  -# // 商品情報編集
   .main
     .item
       .item__content
@@ -22,23 +22,33 @@
                 .image-box__container
                   #image-box-1
                   .item-num-0
-                  = f.fields_for :item_images do |i|
-                    .input-area#image-box__container
-                      = i.file_field :item_images
-                      %label.input{type: 'file', name: "item[item_images_attributes][][image]", value:"image", style: "display:none", id:"img-file",required: true,for: "img-file"}
-                        = img.file_field :image_url,"data-id": "#{i}",class: "file_field"
-                          %li
-                            -if image.id.present?
-                              = image_tag "#{img.object.image_url}",size: "114x116",class:"product_image"
-                          -if image.id.present?
-                            .btn-box
-                              %a 編集
-                              = link_to "削除", image_path(image.id), method: :delete, class: "destroy-btn"
-                          -unless image.id.present?
-                            .btn-box
-                              %a 編集
-                              %a.delete-btn 削除
-                                %i.fas.fa-camera
+                  = f.fields_for :item_images, @item.item_images.first do |image|
+                    .item__img__dropzone.clearfix
+                      #preview
+                      -# １〜５枚目プレビュー表示
+                      .item__img__dropzone__input
+                        = image.label :image, for: "upload-image" do
+                          .input-area
+                            = image.file_field :image_url, id: "upload-image", class: "upload-image", 'data-image': 0
+
+                          .item__img__dropzone__input__description
+                            .item__img__dropzone__input__description__text
+                              ドラッグアンドドロップ
+                              %br
+                              またはクリックしてファイルをアップロード
+
+                    .item__img__dropzone2.clearfix
+                      #preview2
+                      -# ６〜１０枚目プレビュー表示
+                      .item__img__dropzone2__input2
+                        = image.label :image, for: "upload-image" do
+                          .input-area
+                            = image.file_field :image_url, id: "upload-image", class: "upload-image", 'data-image': 0
+                          .item__img__dropzone2__input2__description
+                            .item__img__dropzone2__input2__description__text
+                              ドラッグアンドドロップ
+                              %br
+                              またはクリックしてファイルをアップロード
                       
           -# // 商品情報入力(商品名)
           .item__data--box
@@ -144,4 +154,4 @@
               = link_to "もどる", "/", class: "btn "
 
   = render partial: "devise/shared/form_footer"
-  
+
