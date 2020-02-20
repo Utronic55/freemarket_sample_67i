@@ -6,5 +6,5 @@ class Item < ApplicationRecord
   belongs_to :buyer, class_name: "User",optional: true
   belongs_to :category
   accepts_nested_attributes_for :item_images
-
+  # validates :item_images , presence: true
 end
