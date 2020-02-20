@@ -68,7 +68,8 @@
                     %span.listing-default--require 必須  
                     .listing-select-wrapper
                       .listing-select-wrapper__box#parent_wrapper
-                        = select_tag(:category_id, options_for_select(@parent_categories, selected: @parent.name),class: 'listing-select-wrapper__box--select', id: 'parent_category')
+                      = f.select :category_id, options_for_select(Category.where(ancestry: nil).map{|c|[c.name, c.id]}, @parent.id), {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+                    #category
                     #children_wrapper.listing-select-wrapper__added
                       .listing-select-wrapper__box
                         %select#child_category.listing-select-wrapper__box--select{:name => ":category_id",data: {child_id: @child.id}}
