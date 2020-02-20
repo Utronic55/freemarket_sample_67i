@@ -28,13 +28,11 @@ class ItemsController < ApplicationController
   
   def create
     @item = Item.new(item_params)
-
-    if @item.save!
+    if @item.save
       redirect_to root_path
     else
       render :new
     end
-
   end
 
   def show
@@ -65,6 +63,8 @@ class ItemsController < ApplicationController
     if @item.saler_id == current_user.id
       @item.update(update_params)
       redirect_to root_path
+    else
+      render :edit
     end
   end
 
