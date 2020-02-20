@@ -1,3 +1,4 @@
+- image = @item.item_images.first
 .detail
   .detail_header
     .detail_header_top
@@ -13,11 +14,12 @@
         .main__image
           %ul
             %li
-              = image_tag @images.image.url, class:"main-image",size: "400x300"
+              = image_tag image.image.url, class:"main-image",size: "400x300"
               %ul
                 - @item.item_images.each do |image|
                   %li
                     = image_tag image.image_url,class:"image-list",size: "250x150"
+
       .detail_content_main_box-price
         .detail_content_main_price
           ￥
