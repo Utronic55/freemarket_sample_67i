@@ -54,23 +54,23 @@ class ItemsController < ApplicationController
     @child_categories = Category.where('ancestry = ?', "#{@grandchild.parent.ancestry}")
     #孫カテゴリの配列
     @grand_child = Category.where('ancestry = ?', "#{@grandchild.ancestry}")
+    
+  end
+
+  def update
+    @item.update(item_params)
     respond_to do |format|
       format.html
       format.json
     end
-  end
-
-  def update
-    @item = Item.find(params[:id])
-    if @item.saler_id == current_user.id
-      @item.update(update_params)
-      redirect_to root_path
-    end
+    return redirect_to root_path
+     
   end
 
   def destroy
-    item = Item.find(params[:id])
+    item = Item.(item_params)
     item.destroy
+    item.item_image.destroy
     redirect_to root_path, notice: "投稿内容を削除しました"
 
   end
@@ -81,12 +81,12 @@ end
   private
 
   def item_params
-    params.require(:item).permit(:name,:text,:category_id,:child_category_id,:grandchild_category_id,:quality,:delivery_charge,:area_id,:delivery_date,:price,item_images_attributes: [:image]).merge(saler_id: current_user.id)
+    params.require(:item).permit(:name,:text,:category_id,:child_category_id,:grandchild_category_id,:quality,:delivery_charge,:area_id,:delivery_date,:price,item_images_attributes: [:image,:_destroy, :id]).merge(saler_id: current_user.id)
   end
 
-  def update_params
-    params.require(:item).permit(:name,:text,:category_id,:child_category_id,:grandchild_category_id,:quality,:delivery_charge,:area_id,:delivery_date,:saler_id,:price,item_images_attributes: [:image])
-  end
+  # def update_params
+  #   params.require(:item).permit(:name,:text,:category_id,:child_category_id,:grandchild_category_id,:quality,:delivery_charge,:area_id,:delivery_date,:saler_id,:price,item_images_attributes: [:image])
+  # end
 
   def set_item
     @item = Item.find(params[:id])
