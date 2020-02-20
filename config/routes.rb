@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   root to: "top#index"
   resources :items, only: [:index,:new, :show,:create,:edit,:update,:destroy] do
     #Ajaxで動くアクションのルートを作成
-    collection do
-      get 'get_category_children', defaults: { format: 'json' }
-      get 'get_category_grandchildren', defaults: { format: 'json' }
-    end
+      collection do
+        get 'get_category_children', defaults: { format: 'json' }
+        get 'get_category_grandchildren', defaults: { format: 'json' }
+      end
   end
   resources :item_images, only: :destroy
   resources  controller: :items, only: :item_image_destroy, defaults: { format: 'json' } do

@@ -55,10 +55,7 @@ class ItemsController < ApplicationController
     @child_categories = Category.where('ancestry = ?', "#{@grandchild.parent.ancestry}")
     #孫カテゴリの配列
     @grand_child = Category.where('ancestry = ?', "#{@grandchild.ancestry}")
-    respond_to do |format|
-      format.html
-      format.json
-    end
+    
   end
 
   def update
@@ -67,6 +64,12 @@ class ItemsController < ApplicationController
     else
       redirect_to edit_item_path
     end
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
+     
   end
 
   def destroy
@@ -82,7 +85,7 @@ end
   private
 
   def item_params
-    params.require(:item).permit(:name,:text,:category_id,:child_category_id,:grandchild_category_id,:quality,:delivery_charge,:area_id,:delivery_date,:price,item_images_attributes: [:image]).merge(saler_id: current_user.id)
+    params.require(:item).permit(:name,:text,:category_id,:child_category_id,:grandchild_category_id,:quality,:delivery_charge,:area_id,:delivery_date,:price,item_images_attributes: [:image,:_destroy, :id]).merge(saler_id: current_user.id)
   end
 
   def update_params
