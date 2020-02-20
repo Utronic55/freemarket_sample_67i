@@ -8,6 +8,13 @@ Rails.application.routes.draw do
         get 'get_category_grandchildren', defaults: { format: 'json' }
       end
   end
+  resources :item_images, only: :destroy
+  resources  controller: :items, only: :item_image_destroy, defaults: { format: 'json' } do
+    collection do
+      delete "image_destroy"
+    end
+  end
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
@@ -16,7 +23,7 @@ Rails.application.routes.draw do
     post 'addresses', to: 'users/registrations#create_address'
   end
 
-  resources :mypages, only: [:index, :new]   
+  resources :mypages, only: [:index, :new]
 
   resources :credits, only: [:new, :create, :show] do
     collection do
