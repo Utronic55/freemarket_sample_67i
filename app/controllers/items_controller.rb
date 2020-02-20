@@ -45,6 +45,7 @@ class ItemsController < ApplicationController
   def edit
     @item.item_images.build
     @item_images = ItemImage.where(item_id: @item.id)
+    @item_image = ItemImage.find(@item.item_image_ids)
     @grandchild = Category.find(@item.grandchild_category_id)
     @child = Category.find(@item.child_category_id)
     @parent = Category.find(@item.category_id)
@@ -61,10 +62,10 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
-    if @item.saler_id == current_user.id
-      @item.update(update_params)
-      redirect_to root_path
+    if @item.update_attributes(update_params)
+      redirect_to root_path ,notice: '商品を編集しました'
+    else
+      redirect_to edit_item_path
     end
   end
 
@@ -85,7 +86,7 @@ end
   end
 
   def update_params
-    params.require(:item).permit(:name,:text,:category_id,:child_category_id,:grandchild_category_id,:quality,:delivery_charge,:area_id,:delivery_date,:saler_id,:price,item_images_attributes: [:image])
+    params.require(:item).permit(:name,:text,:category_id,:child_category_id,:grandchild_category_id,:quality,:delivery_charge,:area_id,:delivery_date,:saler_id,:price,item_images_attributes: [:image,:id])
   end
 
   def set_item

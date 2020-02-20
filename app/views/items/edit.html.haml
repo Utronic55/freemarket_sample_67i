@@ -21,12 +21,16 @@
                 - @item_images.each do |i|
                   .item-image{"data-image" => i.image}
                     .item-image__content
-                      .item-image__content--icon
-                        = image_tag i.image.url, "height": "114", "width": "116"
+                      .item-image__content--icon#item-image__operetion--delete
+                        -if @item_images.present?
+                          = image_tag i.image.url, "height": "114", "width": "116"
+                        -if @item_images.present?
+                          .btn-box
+                            = link_to "削除", item_image_path(@item_image), method: :delete, class: "item-image__operetion--delete"
                 .image-box__item-num-0#image-box__container
                   = f.fields_for :image do |i|
                     .input-area#image-box__container
-                      = i.file_field :image, type: 'file', name: "item[item_images_attributes][][image]", value:"image", style: "display:none", id:"img-file",required: true
+                      = i.file_field :image, type: 'file', name: "item[item_images_attributes][][image]", value:"image", style: "display:none", id:"img-file"
                       %label{for: "img-file"}
                         %i.fas.fa-camera
                         -# %p.info 最大10枚までアップロードできます

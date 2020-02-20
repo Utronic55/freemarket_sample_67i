@@ -50,6 +50,6 @@ $(function(){
     //プレビューを削除
     target_image.remove();
     //inputタグに入ったファイルを削除
-    file_field.val("")
+    file_field.value
   })
 });
