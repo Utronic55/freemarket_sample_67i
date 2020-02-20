@@ -68,9 +68,8 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    item = Item.(item_params)
+    item = Item.find(params[:id])
     item.destroy
-    item.item_image.destroy
     redirect_to root_path, notice: "投稿内容を削除しました"
 
   end
