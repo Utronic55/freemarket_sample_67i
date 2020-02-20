@@ -9,4 +9,5 @@ class Item < ApplicationRecord
   validates  :price,  presence: true,length: {minimum: 3, maxinum: 7},numericality: { only_integer: true,
     greater_than: 299, less_than: 10000000
     } 
+    # validates :item_images , presence: true
 end
