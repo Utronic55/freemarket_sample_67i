@@ -2,9 +2,6 @@
   .detail_header
     .detail_header_top
       = render 'share/header'
-    .nav
-      
-
   .detail_content
     .detail_content_main_box
       .detail_content_main_box-name
@@ -30,24 +27,16 @@
         %table
           %tbody
             %tr
-              %td 商品説明
-              %td
-                =@item.text
-            %tr
               %td 出品者
               %td
-                = @item.saler.nickname
-            %tr
-              %td カテゴリー
-              %td
-                =@item.category.name
+                = @user.nickname
             %tr
               %td 商品の状態
               %td
                 =@item.quality
             %tr
               %td 配送料の負担
-              %td
+              %td 
                 =@item.delivery_charge
             %tr
               %td 配送元の地域
@@ -58,7 +47,6 @@
               %td 発送日の目安
               %td
                 = @item.delivery_date
-
       .l-single-container
         .listing-item-change-box
           - if user_signed_in? && @item.saler_id == current_user.id
