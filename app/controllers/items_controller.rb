@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
 
-    if @item.save
+    if @item.save!
       redirect_to root_path
     else
       redirect_to root_path,notice: '出品に失敗しました'
@@ -73,7 +73,7 @@ class ItemsController < ApplicationController
     if @item.update_attributes(update_params)
       redirect_to root_path ,notice: '商品を編集しました'
     else
-      redirect_to edit_item_path,notice: '編集に失敗しました'
+      redirect_to edit_item_path ,notice: '編集に失敗しました'
     end
      
   end
