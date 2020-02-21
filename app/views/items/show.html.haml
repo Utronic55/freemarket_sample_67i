@@ -40,9 +40,17 @@
               %td
                 = @item.saler.nickname
             %tr
-              %td カテゴリー
+              %td 大カテゴリー
               %td
                 =@item.category.name
+            %tr
+              %td 中カテゴリー
+              %td
+                =@item.child_category.name
+            %tr
+              %td 小カテゴリー
+              %td
+                =@item.grandchild_category.name
             %tr
               %td 商品の状態
               %td

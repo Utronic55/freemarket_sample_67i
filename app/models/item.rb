@@ -4,7 +4,9 @@ class Item < ApplicationRecord
   has_many :item_images
   belongs_to :saler, class_name: "User"
   belongs_to :buyer, class_name: "User",optional: true
-  belongs_to :category
+  belongs_to :category,class_name: "Category"
+  belongs_to :child_category,class_name: "Category"
+  belongs_to :grandchild_category,class_name: "Category"
   accepts_nested_attributes_for :item_images
   validates :item_images , presence: true
 
