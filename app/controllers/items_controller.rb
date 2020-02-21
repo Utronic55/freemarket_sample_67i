@@ -55,6 +55,10 @@ class ItemsController < ApplicationController
     @child_categories = Category.where('ancestry = ?', "#{@grandchild.parent.ancestry}")
     #孫カテゴリの配列
     @grand_child = Category.where('ancestry = ?', "#{@grandchild.ancestry}")
+    respond_to do |format|
+      format.html
+      format.json
+    end
     
   end
 
@@ -63,11 +67,6 @@ class ItemsController < ApplicationController
       redirect_to root_path ,notice: '商品を編集しました'
     else
       redirect_to edit_item_path
-    end
-
-    respond_to do |format|
-      format.html
-      format.json
     end
      
   end
