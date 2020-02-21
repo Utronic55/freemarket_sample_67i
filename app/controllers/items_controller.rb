@@ -35,6 +35,13 @@ class ItemsController < ApplicationController
       render :new
     end
 
+    # @item = Item.new(item_params)
+    # @item.save
+    # # if 
+    # redirect_to root_path
+    # # else
+    # #   render :new
+    # # end
   end
 
   def show
