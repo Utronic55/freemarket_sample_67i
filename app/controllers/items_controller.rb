@@ -35,6 +35,13 @@ class ItemsController < ApplicationController
       redirect_to root_path,notice: '出品に失敗しました'
     end
 
+    # @item = Item.new(item_params)
+    # @item.save
+    # # if 
+    # redirect_to root_path
+    # # else
+    # #   render :new
+    # # end
   end
 
   def show
