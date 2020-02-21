@@ -5,6 +5,7 @@ class Category < ApplicationRecord
   validates :name, presence: true
   validates :text, presence: true
   validates :category_id, presence: true
+  
   validates :quality, presence: true
   validates :delievery_charge, presence: true
   validates :delivery_date, presence: true
