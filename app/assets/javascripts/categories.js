@@ -7,9 +7,9 @@ $(function(){
   // 子カテゴリーの表示作成
   function appendChidrenBox(insertHTML){
     var childSelectHtml = '';
-    childSelectHtml = `<div class='select-default__added' id= 'children_wrapper'>
+    childSelectHtml = `<div class='select-default__added' id= 'children_wrapper' >
                         <div class='select-default__box'>
-                          <select class="select-default__box--select" id="child_category" name="item[child_category_id]">
+                          <select class="select-default__box--select" id="child_category" name="item[child_category_id]" required:true>
                             <option value="---" data-category="---">---</option>
                             ${insertHTML}
                           <select>
@@ -23,7 +23,7 @@ $(function(){
     var grandchildSelectHtml = '';
     grandchildSelectHtml = `<div class='select-default__added' id= 'grandchildren_wrapper'>
                               <div class='select-default__box'>
-                                <select class="select-default__box--select" id="grandchild_category" name="item[grandchild_category_id]">
+                                <select class="select-default__box--select" id="grandchild_category" name="item[grandchild_category_id]" required:true>
                                   <option value="---" data-category="---">---</option>
                                   ${insertHTML}
                                 </select>
