@@ -9,7 +9,9 @@ $(function(){
     var files = $('input[type="file"]').prop('files')[0];
     $.each(this.files, function(i, file){
       //FileReaderのreadAsDataURLで指定したFileオブジェクトを読み込む
-      var fileReader = new FileReader();
+      var fileReader = new FileReader();{
+        $('item__data--box--btn').prop('disabled', false);
+      }
       
       //DataTransferオブジェクトに対して、fileを追加
       dataBox.items.add(file)
@@ -44,7 +46,6 @@ $(function(){
   });
   //削除ボタンをクリックすると発火するイベント
   $(document).on("click", '.item-image__operetion--delete', function(){
-    console.log('ok')
     //プレビュー要素を取得
     var target_image = $(this).parent().parent()
     //プレビューを削除

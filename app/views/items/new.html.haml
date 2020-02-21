@@ -6,7 +6,7 @@
       .item__content
         %h2
           商品の情報を入力
-        = form_with model: @item, url: items_path, local: true, class: "item__data" do |f|
+        = form_with model: @item, url: items_path, local: true, method: :post,class: "item__data" do |f|
           // 画像アップロード
           .sell_form__main__box
             .sell_upload_box 
@@ -23,7 +23,7 @@
                   .item-num-0
                   = f.fields_for :item_images do |i|
                     .input-area#image-box__container
-                      = i.file_field :item_images,type: 'file', name: "item[item_images_attributes][][image]", value:"image", style: "display:none", id:"img-file",required: true
+                      = i.file_field :item_images,type: 'file', name: "item[item_images_attributes][][image]", value:"image", style: "display:none", id:"img-file"
                       %label.input{for: "img-file"}
                         %i.fas.fa-camera
                       
