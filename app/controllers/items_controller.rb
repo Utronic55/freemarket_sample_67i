@@ -66,7 +66,7 @@ class ItemsController < ApplicationController
     if @item.update_attributes(update_params)
       redirect_to root_path ,notice: '商品を編集しました'
     else
-      redirect_to edit_item_path
+      redirect_to edit_item_path,notice: '出品に失敗しました'
     end
      
   end
